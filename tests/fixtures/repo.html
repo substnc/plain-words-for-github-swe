@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="auto">
+<head><meta charset="utf-8"><title>GitHub - facebook/react</title>
+<style>body{font-family:sans-serif;margin:0} .Layout{display:flex;gap:24px;padding:16px} .Layout-main{flex:1} .Layout-sidebar{width:300px} button,.btn{padding:4px 8px} li{margin:2px 0}</style>
+</head>
+<body>
+<!--HEADER-->
+<div id="repo-content-pjax-container">
+<react-app app-name="react-code-view">
+<div class="Layout Layout--flowRow-until-md">
+<div class="Layout-main">
+  <div class="d-flex gap-2" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+    <button type="button" id="ref-picker-repos-header-ref-selector" aria-haspopup="true" aria-label="main branch" data-hotkey="w" class="prc-Button-ButtonBase-c50BI" data-variant="default"><span data-component="text"><svg aria-hidden="true"></svg><span class="RefSelectorAnchoredOverlay-module__RefSelectorText">main</span></span></button>
+    <a href="/facebook/react/branches" class="prc-Button-ButtonBase-c50BI" data-variant="invisible"><span data-component="text"><svg aria-hidden="true"></svg>Branches</span></a>
+    <a href="/facebook/react/tags" class="prc-Button-ButtonBase-c50BI" data-variant="invisible"><span data-component="text"><svg aria-hidden="true"></svg>Tags</span></a>
+    <span class="TextInput-wrapper"><input type="text" id="test-go-to-file" aria-label="Go to file" placeholder="Go to file" autocomplete="off" value=""></span>
+    <button type="button" aria-haspopup="true" class="prc-Button-ButtonBase-c50BI" data-variant="default"><span data-component="text">Add file</span><span data-component="trailingVisual"><svg aria-hidden="true"></svg></span></button>
+    <button type="button" id="code-button-test" aria-haspopup="true" class="prc-Button-ButtonBase-c50BI" data-variant="primary"><span data-component="leadingVisual"><svg aria-hidden="true"></svg></span><span data-component="text">Code</span><span data-component="trailingVisual"><svg aria-hidden="true"></svg></span></button>
+    <button type="button" aria-label="Open more actions menu" aria-haspopup="true" class="prc-Button-ButtonBase-c50BI"><svg aria-hidden="true"></svg></button>
+  </div>
+
+  <!-- Add file-menyn, som om den vore öppen -->
+  <ul role="menu" id="test-add-file-menu" style="list-style:none">
+    <li role="menuitem" tabindex="-1"><a href="/facebook/react/new/main"><span>Create new file</span></a></li>
+    <li role="menuitem" tabindex="-1"><a href="/facebook/react/upload/main"><span>Upload files</span></a></li>
+  </ul>
+
+  <!-- Code-knappens meny, som om den vore öppen -->
+  <div id="test-code-menu" class="prc-Overlay-Overlay" role="dialog" style="border:1px solid #ccc;padding:8px;margin:8px 0">
+    <div role="tablist" aria-label="Remote URL options" class="UnderlineNav">
+      <button role="tab" type="button" aria-selected="true" id="local-panel-tab"><span>Local</span></button>
+      <button role="tab" type="button" aria-selected="false"><span>Codespaces</span></button>
+    </div>
+    <div role="tablist" aria-label="Clone options">
+      <button role="tab" type="button" aria-selected="true" class="UnderlineNav-item"><span>HTTPS</span></button>
+      <button role="tab" type="button" class="UnderlineNav-item"><span>SSH</span></button>
+      <button role="tab" type="button" class="UnderlineNav-item"><span>GitHub CLI</span></button>
+    </div>
+    <div style="display:flex">
+      <input type="text" aria-label="Repository URL" readonly value="https://github.com/facebook/react.git">
+      <button type="button" aria-label="Copy url to clipboard" class="prc-Button-IconButton"><svg aria-hidden="true"></svg></button>
+    </div>
+    <ul role="menu" style="list-style:none;padding:0">
+      <li role="menuitem"><a href="x-github-client://openRepo/https://github.com/facebook/react"><span>Open with GitHub Desktop</span></a></li>
+      <li role="menuitem"><a href="https://github.com/facebook/react/archive/refs/heads/main.zip" rel="nofollow"><span>Download ZIP</span></a></li>
+    </ul>
+    <button type="button" class="prc-Button-ButtonBase-c50BI"><span data-component="text">Create codespace on main</span></button>
+  </div>
+
+  <div class="Box">
+    <div class="Box-header d-flex">
+      <a href="/gaearon" class="author" data-hovercard-type="user">gaearon</a>
+      <a href="/facebook/react/commit/3f1c7a1b2e4d" class="Link--secondary">Fix a bug in the reconciler</a>
+      <a href="/facebook/react/commits/main/" class="prc-Button-ButtonBase-c50BI" data-variant="invisible"><span data-component="text"><span class="fgColor-default">20,152 Commits</span></span></a>
+    </div>
+    <table aria-labelledby="folders-and-files">
+      <h2 class="sr-only" id="folders-and-files">Folders and files</h2>
+      <tbody>
+        <tr class="react-directory-row"><td><div class="react-directory-filename-cell"><a title="packages" aria-label="packages, (Directory)" href="/facebook/react/tree/main/packages">packages</a></div></td><td><a href="/facebook/react/commit/abc1234">Update stuff</a></td></tr>
+        <tr class="react-directory-row"><td><div class="react-directory-filename-cell"><a title="package.json" aria-label="package.json, (File)" href="/facebook/react/blob/main/package.json">package.json</a></div></td><td><a href="/facebook/react/commit/def5678">Bump versions</a></td></tr>
+        <tr class="react-directory-row"><td><div class="react-directory-filename-cell"><a title="README.md" aria-label="README.md, (File)" href="/facebook/react/blob/main/README.md">README.md</a></div></td><td>Docs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="readme" class="Box">
+    <nav aria-label="Repository files" class="UnderlineNav-like">
+      <ul role="list" style="list-style:none;display:flex;gap:12px">
+        <li><a href="#readme-ov-file" aria-current="page"><span>README</span></a></li>
+        <li><a href="#coc-ov-file"><span>Code of conduct</span></a></li>
+        <li><a href="#contributing-ov-file"><span>Contributing</span></a></li>
+        <li><a href="#MIT-1-ov-file"><span>MIT license</span></a></li>
+        <li><a href="#security-ov-file"><span>Security</span></a></li>
+      </ul>
+    </nav>
+    <article class="markdown-body entry-content container-lg" itemprop="text">
+      <h1>React</h1>
+      <p>React is a JavaScript library for building user interfaces.</p>
+      <ul><li id="test-readme-list-item">Labels</li><li>Code</li></ul>
+    </article>
+  </div>
+</div>
+
+<div class="Layout-sidebar">
+  <div class="BorderGrid">
+    <div class="BorderGrid-cell">
+      <h2 class="mb-3 h4">About</h2>
+      <p>The library for web and native user interfaces.</p>
+      <div class="f6"><a href="/topics/react" class="topic-tag topic-tag-link">react</a> <a href="/topics/javascript" class="topic-tag topic-tag-link">javascript</a></div>
+      <div class="mt-2"><a href="#readme-ov-file" class="Link--muted"><svg aria-hidden="true"></svg>Readme</a></div>
+      <div class="mt-2"><a href="/facebook/react/activity" class="Link--muted"><svg aria-hidden="true"></svg><span class="color-fg-muted">Activity</span></a></div>
+      <div class="mt-2"><a href="/facebook/react/stargazers" class="Link--muted"><svg aria-hidden="true"></svg><strong>251k</strong> stars</a></div>
+      <div class="mt-2"><a href="/facebook/react/watchers" class="Link--muted"><svg aria-hidden="true"></svg><strong>6.6k</strong> watching</a></div>
+      <div class="mt-2"><a href="/facebook/react/forks" class="Link--muted"><svg aria-hidden="true"></svg><strong>51.5k</strong> forks</a></div>
+      <div class="mt-2"><a href="/contact/report-content?content_url=x" class="Link--muted">Report repository</a></div>
+    </div>
+    <div class="BorderGrid-cell">
+      <h2 class="h4 mb-3"><a href="/facebook/react/releases" class="Link--primary no-underline Link">Releases <span title="117" class="Counter">117</span></a></h2>
+      <a href="/facebook/react/releases/tag/v19.2.0" class="Link--primary d-flex no-underline"><span>19.2.0 (October 1st, 2025)</span> <span class="Label Label--success">Latest</span></a>
+    </div>
+    <div class="BorderGrid-cell">
+      <h2 class="h4 mb-3"><a href="/facebook/react/network/dependents" class="Link--primary no-underline Link">Used by <span class="Counter">26.4m</span></a></h2>
+    </div>
+    <div class="BorderGrid-cell">
+      <h2 class="h4 mb-3"><a href="/facebook/react/graphs/contributors" class="Link--primary no-underline Link">Contributors <span class="Counter">1,749</span></a></h2>
+    </div>
+    <div class="BorderGrid-cell">
+      <h2 class="h4 mb-3">Languages</h2>
+    </div>
+    <div class="BorderGrid-cell" style="text-align:right">
+      <a id="test-far-right" href="/facebook/react/deployments" style="float:right">Deployments</a>
+    </div>
+  </div>
+</div>
+</div>
+</react-app>
+</div>
+</body>
+</html>

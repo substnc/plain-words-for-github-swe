@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Bug: something breaks · Issue #30000 · facebook/react</title>
+<style>body{font-family:sans-serif;margin:0} .Layout{display:flex;gap:24px;padding:16px} .Layout-main{flex:1} .Layout-sidebar{width:280px} button{padding:4px 8px}</style>
+</head>
+<body>
+<!--HEADER-->
+<div id="repo-content-pjax-container">
+<react-app app-name="issues-react">
+  <div data-testid="issue-header" style="padding:16px">
+    <h1 data-component="PH_Title"><bdi class="markdown-title" data-testid="issue-title">Bug: something breaks</bdi> <span>#30000</span></h1>
+    <div style="display:flex;gap:8px">
+      <button type="button" data-variant="default" class="prc-Button-ButtonBase-c50BI"><span data-component="text">Edit</span></button>
+      <a href="/facebook/react/issues/new/choose" data-variant="primary" class="prc-Button-ButtonBase-c50BI"><span data-component="text">New issue</span></a>
+    </div>
+    <span data-testid="header-state" title="Status: Open" class="prc-StateLabel-StateLabel-Iawzp"><svg aria-hidden="true"></svg>Open</span>
+  </div>
+
+  <div class="Layout">
+    <div class="Layout-main">
+      <div data-testid="issue-body">
+        <a data-testid="issue-body-header-author" href="/octocat" class="author" data-hovercard-type="user">octocat</a>
+        <div class="markdown-body"><p>When I click the thing, it breaks. Assignees and Labels are words in this text.</p></div>
+        <div class="reactions">
+          <button type="button" aria-label="All reactions" class="prc-Button-IconButton"><svg aria-hidden="true"></svg></button>
+          <button type="button" aria-label="Add or remove reactions" class="prc-Button-IconButton"><svg aria-hidden="true"></svg></button>
+          <button type="button" aria-label="Comment actions" aria-haspopup="true" class="prc-Button-IconButton"><svg aria-hidden="true"></svg></button>
+        </div>
+        <ul role="menu" style="list-style:none">
+          <li role="menuitem"><span>Copy link</span></li>
+          <li role="menuitem"><span>Quote reply</span></li>
+          <li role="menuitem"><span>Report content</span></li>
+        </ul>
+      </div>
+
+      <div class="CommentBox" style="margin-top:24px">
+        <div role="tablist" class="tabnav-tabs">
+          <button role="tab" type="button" aria-selected="true">Write</button>
+          <button role="tab" type="button">Preview</button>
+        </div>
+        <textarea aria-label="Markdown value" placeholder="Use Markdown to format your comment" rows="4" style="width:100%"></textarea>
+        <div class="ActionBar" style="display:flex;gap:8px;justify-content:flex-end">
+          <button type="button" class="prc-Button-ButtonBase-c50BI"><span data-component="text">Close issue</span></button>
+          <button type="button" aria-label="More options" class="prc-Button-IconButton" aria-haspopup="true"><svg aria-hidden="true"></svg></button>
+          <button type="submit" data-variant="primary" class="prc-Button-ButtonBase-c50BI"><span data-component="text">Comment</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="Layout-sidebar" data-testid="issue-viewer-metadata-pane">
+      <div><h3>Assignees</h3><button type="button" aria-label="Edit Assignees"><svg aria-hidden="true"></svg></button><span>No one assigned</span></div>
+      <div><h3>Labels</h3><button type="button" aria-label="Edit Labels"><svg aria-hidden="true"></svg></button><a href="/facebook/react/labels/Type%3A%20Bug" class="IssueLabel">Type: Bug</a></div>
+      <div><h3>Type</h3><button type="button" aria-label="Edit Type"><svg aria-hidden="true"></svg></button><span>No type</span></div>
+      <div><h3>Projects</h3><button type="button" aria-label="Edit Projects"><svg aria-hidden="true"></svg></button></div>
+      <div><h3>Milestone</h3><button type="button" aria-label="Edit Milestone"><svg aria-hidden="true"></svg></button><span>No milestone</span></div>
+      <div><h3>Relationships</h3></div>
+      <div><h3>Development</h3><button type="button" aria-label="Link a branch, pull request, or commit"><svg aria-hidden="true"></svg></button><button type="button">Create a branch</button></div>
+      <div><h3>Notifications</h3><button type="button" class="prc-Button-ButtonBase-c50BI"><span data-component="text">Subscribe</span></button></div>
+      <div><h3>Participants</h3></div>
+      <div>
+        <button type="button"><span>Lock conversation</span></button>
+        <button type="button"><span>Pin issue</span></button>
+        <button type="button"><span>Transfer issue</span></button>
+        <button type="button"><span>Delete issue</span></button>
+      </div>
+    </div>
+  </div>
+</react-app>
+</div>
+</body>
+</html>

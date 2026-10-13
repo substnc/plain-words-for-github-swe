@@ -1,0 +1,108 @@
+<style>svg{width:16px;height:16px;vertical-align:middle} .AppHeader-globalBar{display:flex;justify-content:space-between;align-items:center;padding:8px 16px;background:#f6f8fa} .AppHeader-globalBar-start,.AppHeader-globalBar-end,.AppHeader-actions{display:flex;gap:8px;align-items:center} .AppHeader-context ul,.UnderlineNav-body,.pagehead-actions{display:flex;gap:12px;list-style:none;margin:0;padding:0} #repository-container-header{padding:8px 16px} .UnderlineNav{display:flex;justify-content:space-between}</style>
+<header class="AppHeader" role="banner">
+  <div class="AppHeader-globalBar js-global-bar">
+    <div class="AppHeader-globalBar-start">
+      <deferred-side-panel>
+        <button id="dialog-show-global-nav" aria-label="Open global navigation menu" class="Button Button--iconOnly Button--secondary Button--medium AppHeader-button" type="button"><svg aria-hidden="true" height="16" width="16" class="octicon octicon-three-bars"></svg></button>
+      </deferred-side-panel>
+      <a class="AppHeader-logo ml-1" href="https://github.com/" data-hotkey="g d" aria-label="Homepage "><svg height="32" aria-hidden="true" class="octicon octicon-mark-github"></svg></a>
+      <div class="AppHeader-context">
+        <div class="AppHeader-context-full">
+          <nav role="navigation" aria-label="Page context">
+            <ul role="list">
+              <li><a class="AppHeader-context-item" href="/facebook"><span class="AppHeader-context-item-label">facebook</span></a></li>
+              <li><a class="AppHeader-context-item" href="/facebook/react"><span class="AppHeader-context-item-label">react</span></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="AppHeader-globalBar-end">
+      <div class="AppHeader-search">
+        <qbsearch-input class="search-input">
+          <button type="button" class="header-search-button placeholder input-button form-control" data-target="qbsearch-input.inputButton" aria-label="Search or jump to…" data-hotkey="s,/">
+            <svg aria-hidden="true" class="octicon octicon-search"></svg>
+            <span class="flex-1" data-target="qbsearch-input.inputButtonText">Type <kbd class="AppHeader-search-kbd">/</kbd> to search</span>
+          </button>
+        </qbsearch-input>
+      </div>
+      <div class="AppHeader-actions">
+        <button type="button" id="copilot-chat-header-button" aria-label="Chat with Copilot" class="Button Button--iconOnly"><svg aria-hidden="true" class="octicon octicon-copilot"></svg></button>
+        <action-menu>
+          <button id="global-create-menu-anchor" aria-label="Create something new" type="button" class="AppHeader-button Button--secondary Button--small Button"><svg aria-hidden="true" class="octicon octicon-plus"></svg><svg aria-hidden="true" class="octicon octicon-triangle-down"></svg></button>
+        </action-menu>
+        <a href="/issues" aria-label="Your issues" class="Button Button--iconOnly"><svg aria-hidden="true" class="octicon octicon-issue-opened"></svg></a>
+        <a href="/pulls" aria-label="Your pull requests" class="Button Button--iconOnly"><svg aria-hidden="true" class="octicon octicon-git-pull-request"></svg></a>
+      </div>
+      <notification-indicator data-channel="x">
+        <a id="AppHeader-notifications-button" href="/notifications" class="AppHeader-button" aria-label="You have unread notifications"><svg aria-hidden="true" class="octicon octicon-inbox"></svg></a>
+      </notification-indicator>
+      <div class="AppHeader-user">
+        <deferred-side-panel>
+          <button aria-label="Open user navigation menu" class="AppHeader-logo Button--invisible Button--medium Button Button--invisible--noVisuals color-bg-transparent p-0" type="button"><span class="Button-content"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" size="32" height="32" width="32" class="avatar circle"></span></button>
+        </deferred-side-panel>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Plus-menyn, som om den vore öppen -->
+<ul role="menu" aria-labelledby="global-create-menu-anchor" class="ActionListWrap" id="test-plus-menu" style="display:flex;gap:12px;list-style:none;padding:4px 16px;margin:0">
+  <li role="none"><a role="menuitem" href="/new" class="ActionListContent"><span class="ActionListItem-label">New repository</span></a></li>
+  <li role="none"><a role="menuitem" href="/new/import" class="ActionListContent"><span class="ActionListItem-label">Import repository</span></a></li>
+  <li role="none"><a role="menuitem" href="/codespaces/new" class="ActionListContent"><span class="ActionListItem-label">New codespace</span></a></li>
+  <li role="none"><a role="menuitem" href="https://gist.github.com/" class="ActionListContent"><span class="ActionListItem-label">New gist</span></a></li>
+  <li role="none"><a role="menuitem" href="/account/organizations/new" class="ActionListContent"><span class="ActionListItem-label">New organization</span></a></li>
+  <li role="none"><a role="menuitem" href="/facebook/react/issues/new/choose" class="ActionListContent"><span class="ActionListItem-label">New issue</span></a></li>
+</ul>
+
+<!-- Användarmenyn, som om den vore öppen -->
+<ul role="list" class="ActionListWrap" id="test-user-menu" style="display:flex;gap:12px;list-style:none;padding:4px 16px;margin:0">
+  <li class="ActionListItem"><a href="https://github.com/octocat" class="ActionListContent"><span class="ActionListItem-label">Profile</span></a></li>
+  <li class="ActionListItem"><a href="/octocat?tab=repositories" class="ActionListContent"><span class="ActionListItem-label">Repositories</span></a></li>
+  <li class="ActionListItem"><a href="/octocat?tab=stars" class="ActionListContent"><span class="ActionListItem-label">Stars</span></a></li>
+  <li class="ActionListItem"><a href="/settings/profile" class="ActionListContent"><span class="ActionListItem-label">Settings</span></a></li>
+  <li class="ActionListItem"><a href="/logout" class="ActionListContent"><span class="ActionListItem-label">Sign out</span></a></li>
+</ul>
+
+<div id="repository-container-header" class="pt-3 hide-full-screen">
+  <div class="d-flex flex-nowrap flex-justify-end mb-3 px-3 px-lg-5">
+    <div id="repository-details-container" class="flex-shrink-0">
+      <ul class="pagehead-actions flex-shrink-0 d-none d-md-inline">
+        <li>
+          <a href="/sponsors/facebook" class="btn-sm btn" aria-label="Sponsor @facebook"><span>Sponsor</span></a>
+        </li>
+        <li>
+          <a href="/login?return_to=%2Ffacebook%2Freact" rel="nofollow" aria-label="You must be signed in to change notification settings" class="tooltipped tooltipped-s btn-sm btn"><svg aria-hidden="true" class="octicon octicon-bell"></svg>Notifications</a>
+        </li>
+        <li>
+          <a icon="repo-forked" id="fork-button" href="/login?return_to=%2Ffacebook%2Freact" rel="nofollow" aria-label="You must be signed in to fork a repository" class="btn-sm btn"><svg aria-hidden="true" class="octicon octicon-repo-forked"></svg>Fork <span id="repo-network-counter" data-pjax-replace="true" title="51,532" class="Counter">51.5k</span></a>
+        </li>
+        <li>
+          <div data-view-component="true" class="BtnGroup d-flex">
+            <a href="/login?return_to=%2Ffacebook%2Freact" rel="nofollow" aria-label="You must be signed in to star a repository" class="tooltipped tooltipped-sw btn-sm btn"><svg aria-hidden="true" class="octicon octicon-star"></svg><span data-view-component="true" class="d-inline">Star</span> <span id="repo-stars-counter-star" aria-label="251080 users starred this repository" class="Counter js-social-count">251k</span></a>
+            <button aria-label="Add this repository to a list" type="button" class="btn-sm btn BtnGroup-item px-2"><svg aria-hidden="true" class="octicon octicon-triangle-down"></svg></button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <nav data-pjax="#js-repo-pjax-container" aria-label="Repository" class="js-repo-nav js-sidenav-container-pjax js-responsive-underlinenav overflow-hidden UnderlineNav px-3 px-md-4 px-lg-5">
+    <ul class="UnderlineNav-body list-style-none">
+      <li class="d-inline-flex"><a id="code-tab" href="/facebook/react" data-tab-item="i0code-tab" class="UnderlineNav-item selected" aria-current="page"><svg aria-hidden="true" class="octicon octicon-code UnderlineNav-octicon"></svg><span data-content="Code">Code</span><span id="code-repo-tab-count" class="Counter" hidden="hidden"></span></a></li>
+      <li class="d-inline-flex"><a id="issues-tab" href="/facebook/react/issues" data-tab-item="i1issues-tab" class="UnderlineNav-item"><svg aria-hidden="true" class="octicon octicon-issue-opened UnderlineNav-octicon"></svg><span data-content="Issues">Issues</span><span id="issues-repo-tab-count" title="875" class="Counter">875</span></a></li>
+      <li class="d-inline-flex"><a id="pull-requests-tab" href="/facebook/react/pulls" data-tab-item="i2pull-requests-tab" class="UnderlineNav-item"><svg aria-hidden="true" class="octicon octicon-git-pull-request UnderlineNav-octicon"></svg><span data-content="Pull requests">Pull requests</span><span id="pull-requests-repo-tab-count" title="548" class="Counter">548</span></a></li>
+      <li class="d-inline-flex"><a id="discussions-tab" href="/facebook/react/discussions" data-tab-item="i3discussions-tab" class="UnderlineNav-item"><span data-content="Discussions">Discussions</span></a></li>
+      <li class="d-inline-flex"><a id="actions-tab" href="/facebook/react/actions" data-tab-item="i4actions-tab" class="UnderlineNav-item"><span data-content="Actions">Actions</span></a></li>
+      <li class="d-inline-flex"><a id="projects-tab" href="/facebook/react/projects" data-tab-item="i5projects-tab" class="UnderlineNav-item"><span data-content="Projects">Projects</span><span class="Counter">2</span></a></li>
+      <li class="d-inline-flex"><a id="wiki-tab" href="/facebook/react/wiki" data-tab-item="i6wiki-tab" class="UnderlineNav-item"><span data-content="Wiki">Wiki</span></a></li>
+      <li class="d-inline-flex"><a id="security-tab" href="/facebook/react/security" data-tab-item="i7security-tab" class="UnderlineNav-item"><span data-content="Security and quality">Security and quality</span><span class="Counter">8</span></a></li>
+      <li class="d-inline-flex"><a id="insights-tab" href="/facebook/react/pulse" data-tab-item="i8insights-tab" class="UnderlineNav-item"><span data-content="Insights">Insights</span></a></li>
+      <li class="d-inline-flex"><a id="settings-tab" href="/facebook/react/settings" data-tab-item="i9settings-tab" class="UnderlineNav-item"><span data-content="Settings">Settings</span></a></li>
+    </ul>
+    <div class="UnderlineNav-actions js-responsive-underlinenav-overflow position-absolute pr-3 pr-md-4 pr-lg-5 right-0">
+      <action-menu><button aria-label="Additional navigation options" type="button" class="Button Button--iconOnly"><svg aria-hidden="true" class="octicon octicon-kebab-horizontal"></svg></button></action-menu>
+    </div>
+  </nav>
+</div>

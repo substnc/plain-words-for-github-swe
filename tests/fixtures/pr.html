@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Fix the thing by octocat · Pull Request #31000 · facebook/react</title>
+<style>body{font-family:sans-serif;margin:0} .Layout{display:flex;gap:24px;padding:16px} .Layout-main{flex:1} .Layout-sidebar{width:280px} button,summary{padding:4px 8px}</style>
+</head>
+<body>
+<!--HEADER-->
+<div id="repo-content-pjax-container">
+  <div id="partial-discussion-header" class="gh-header" style="padding:16px">
+    <h1 class="gh-header-title"><bdi class="js-issue-title markdown-title">Fix the thing</bdi> <span>#31000</span></h1>
+    <div class="gh-header-actions">
+      <button type="button" class="Button--secondary Button--small Button js-details-target" aria-label="Edit Pull Request title"><span class="Button-label">Edit</span></button>
+      <details class="get-repo-select-menu"><summary class="Button--primary Button--small Button"><span class="Button-label">Code</span></summary></details>
+    </div>
+    <span title="Status: Open" class="State State--open"><svg aria-hidden="true"></svg>Open</span>
+    <span class="commit-ref head-ref"><a href="/octocat/react/tree/fix-the-thing">octocat:fix-the-thing</a></span>
+    <clipboard-copy aria-label="Copy head branch name to clipboard" class="Link--onHover js-copy-branch" tabindex="0" role="button"><svg aria-hidden="true"></svg></clipboard-copy>
+  </div>
+
+  <div class="tabnav tabnav-pr">
+    <nav class="tabnav-tabs" aria-label="Pull request tabs">
+      <a href="/facebook/react/pull/31000" class="tabnav-tab selected js-pjax-history-navigate" aria-current="page"><svg aria-hidden="true"></svg>Conversation <span id="conversation_tab_counter" class="Counter">12</span></a>
+      <a href="/facebook/react/pull/31000/commits" class="tabnav-tab js-pjax-history-navigate"><svg aria-hidden="true"></svg>Commits <span id="commits_tab_counter" class="Counter">3</span></a>
+      <a href="/facebook/react/pull/31000/checks" class="tabnav-tab js-pjax-history-navigate"><svg aria-hidden="true"></svg>Checks <span id="checks_tab_counter" class="Counter">25</span></a>
+      <a href="/facebook/react/pull/31000/files" class="tabnav-tab js-pjax-history-navigate"><svg aria-hidden="true"></svg>Files changed <span id="files_tab_counter" class="Counter">4</span></a>
+    </nav>
+  </div>
+
+  <div class="Layout">
+    <div class="Layout-main">
+      <div class="merge-pr">
+        <div class="merge-message">
+          <div class="BtnGroup btn-group-merge">
+            <button type="button" class="btn btn-primary BtnGroup-item js-details-target">Merge pull request</button>
+            <details open class="details-reset details-overlay select-menu BtnGroup-parent d-inline-block position-relative js-merge-method-menu">
+              <summary aria-label="Select merge method" class="select-menu-button btn btn-primary BtnGroup-item"></summary>
+              <div class="select-menu-modal">
+                <button type="button" role="menuitemradio" class="select-menu-item"><div class="select-menu-item-text"><span class="select-menu-item-heading">Create a merge commit</span></div></button>
+                <button type="button" role="menuitemradio" class="select-menu-item"><div class="select-menu-item-text"><span class="select-menu-item-heading">Squash and merge</span></div></button>
+                <button type="button" role="menuitemradio" class="select-menu-item"><div class="select-menu-item-text"><span class="select-menu-item-heading">Rebase and merge</span></div></button>
+              </div>
+            </details>
+          </div>
+          <button type="button" class="btn">Confirm merge</button>
+          <button type="button" class="btn">Enable auto-merge</button>
+          <button type="button" class="btn">Update branch</button>
+          <button type="button" class="btn">Ready for review</button>
+        </div>
+      </div>
+
+      <div class="timeline-comment-actions">
+        <button type="button" class="btn">Resolve conversation</button>
+        <button type="button" class="btn">Delete branch</button>
+        <button type="button" class="btn">Revert</button>
+      </div>
+
+      <form class="js-new-comment-form">
+        <textarea name="comment[body]" id="new_comment_field" placeholder="Leave a comment" aria-label="Comment body"></textarea>
+        <div class="js-comment-form-actions" style="display:flex;gap:8px">
+          <button type="submit" name="comment_and_close" class="btn">Close pull request</button>
+          <button type="submit" class="btn btn-primary">Comment</button>
+        </div>
+      </form>
+
+      <!-- Files changed-delen -->
+      <div class="pr-toolbar" style="margin-top:24px;display:flex;gap:8px">
+        <details open class="diffbar-item"><summary class="btn btn-sm">Review changes</summary>
+          <div>
+            <label><input type="radio" name="pull_request_review[event]" value="comment"> Comment</label>
+            <label id="test-approve"><input type="radio" name="pull_request_review[event]" value="approve"> Approve</label>
+            <label id="test-request-changes"><input type="radio" name="pull_request_review[event]" value="reject"> Request changes</label>
+            <button type="submit" class="btn btn-primary">Submit review</button>
+          </div>
+        </details>
+        <button type="button" class="btn btn-sm">Unified</button>
+        <button type="button" class="btn btn-sm">Split</button>
+        <label><input type="checkbox"> Hide whitespace</label>
+        <label class="js-reviewed-toggle"><input type="checkbox" class="js-reviewed-checkbox"> Viewed</label>
+        <button type="button" class="btn btn-sm">Start a review</button>
+        <button type="button" class="btn btn-sm">Add single comment</button>
+      </div>
+    </div>
+
+    <div class="Layout-sidebar discussion-sidebar" id="partial-discussion-sidebar">
+      <div class="discussion-sidebar-item"><details class="details-reset details-overlay select-menu"><summary class="discussion-sidebar-heading discussion-sidebar-toggle" aria-label="Request a review"><svg aria-hidden="true"></svg>Reviewers</summary></details><span>No reviews</span></div>
+      <div class="discussion-sidebar-item"><details><summary class="discussion-sidebar-heading discussion-sidebar-toggle">Assignees</summary></details><span>No one assigned</span></div>
+      <div class="discussion-sidebar-item"><details><summary class="discussion-sidebar-heading discussion-sidebar-toggle">Labels</summary></details><span>None yet</span></div>
+      <div class="discussion-sidebar-item"><details><summary class="discussion-sidebar-heading discussion-sidebar-toggle">Projects</summary></details></div>
+      <div class="discussion-sidebar-item"><details><summary class="discussion-sidebar-heading discussion-sidebar-toggle">Milestone</summary></details><span>No milestone</span></div>
+      <div class="discussion-sidebar-item"><details><summary class="discussion-sidebar-heading discussion-sidebar-toggle">Development</summary></details></div>
+      <div class="discussion-sidebar-item"><div class="discussion-sidebar-heading">Notifications</div><button type="submit" class="btn btn-block btn-sm">Unsubscribe</button></div>
+      <div class="discussion-sidebar-item"><div class="participation"><div class="discussion-sidebar-heading text-bold">3 participants</div></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

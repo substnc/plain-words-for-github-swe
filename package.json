@@ -1,0 +1,13 @@
+{
+  "name": "github-for-dummies",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Webbläsartillägg som förklarar GitHub på svenska med vardagliga ord.",
+  "scripts": {
+    "test": "node tests/check-texts.js && node tests/run-tests.js",
+    "icons": "python3 tools/make_icons.py"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}
