@@ -96,7 +96,7 @@ Nästan 400 förklaringar finns i filen `extension/explanations.js`. De täcker 
 
 ## Val jag gjorde
 
-- **GitHubs märke** står litet uppe till höger i rutan, med texten Fungerar med GitHub. GitHub tillåter det så länge märket visar att något fungerar med GitHub, är mindre än tilläggets eget namn och inte ändras. Det får aldrig användas som tilläggets ikon, så ikonen är en egen pratbubbla.
+- **GitHubs märke** står litet uppe till höger i rutan. GitHub tillåter det så länge märket visar att något fungerar med GitHub, är mindre än tilläggets eget namn och inte ändras. Det får aldrig användas som tilläggets ikon, så ikonen är en egen pratbubbla.
 - **Rutan som öppnas från ikonen** är signerad med Anthon Bäckströms namnteckning längst ner.
 - **Namnet byttes 15 oktober 2026** från GitHub-for-dummies till Plain Words for GitHub SWE, eftersom For Dummies är ett skyddat varumärke som förlaget Wiley äger. SWE visar att förklaringarna är på svenska.
 - **Projektet på GitHub fanns redan** som `substnc/GitHub-for-dummies` när jag började, tomt. Jag försökte ändå skapa ett nytt som heter `github-for-dummies`, men GitHub nekade min koppling (felkod 403). Det hade heller inte gått, eftersom GitHub ser stora och små bokstäver som samma namn. Så allt ligger i det befintliga projektet.
