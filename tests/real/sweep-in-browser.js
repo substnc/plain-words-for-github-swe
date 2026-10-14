@@ -71,7 +71,7 @@
   }
   document.body.dispatchEvent(new MouseEvent("mouseover", { bubbles: true }));
   state.finished = true;
-  console.log(`GitHub-for-dummies: ${state.total - state.missing.length}/${state.total} med förklaring på ${state.page}`);
+  console.log(`Plain Words for GitHub SWE: ${state.total - state.missing.length}/${state.total} med förklaring på ${state.page}`);
   console.table(state.missing);
   return state;
 })();

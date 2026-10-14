@@ -1,5 +1,5 @@
 /*
- * GitHub-for-dummies: pratbubblan.
+ * Plain Words for GitHub SWE: pratbubblan.
  *
  * Lyssnar på var musen är på github.com. När musen har stått still över
  * något vi har en förklaring till i ungefär en halv sekund, visas en

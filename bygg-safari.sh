@@ -11,8 +11,8 @@ fi
 
 xcrun safari-web-extension-converter extension \
   --project-location safari \
-  --app-name "GitHub-for-dummies" \
-  --bundle-identifier design.substnc.GitHubForDummies \
+  --app-name "Plain Words SWE" \
+  --bundle-identifier design.substnc.PlainWordsSWE \
   --swift \
   --macos-only \
   --copy-resources \
@@ -20,4 +20,4 @@ xcrun safari-web-extension-converter extension \
   --force
 
 echo ""
-echo "Klart. Öppna safari/GitHub-for-dummies/GitHub-for-dummies.xcodeproj i Xcode och tryck på Play."
+echo "Klart. Öppna "safari/Plain Words SWE/Plain Words SWE.xcodeproj" i Xcode och tryck på Play."

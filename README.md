@@ -1,4 +1,6 @@
-# GitHub-for-dummies
+# Plain Words for GitHub SWE
+
+GitHub förklarat med vanliga ord, på svenska.
 
 Ett webbläsartillägg för Chrome och Safari som förklarar knappar, flikar och menyer på github.com på svenska, med vardagliga ord. Håll musen still över något i en halv sekund så dyker en pratbubbla upp.
 

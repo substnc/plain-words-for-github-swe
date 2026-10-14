@@ -389,7 +389,7 @@ async function main() {
     await tmp.goto("chrome://extensions/");
     extId = await tmp.evaluate(async () => {
       const list = await new Promise((res) => chrome.management.getAll(res));
-      const me = list.find((e) => e.name === "GitHub-for-dummies");
+      const me = list.find((e) => e.name === "Plain Words for GitHub SWE");
       return me && me.id;
     }).catch(() => null);
     await tmp.close();

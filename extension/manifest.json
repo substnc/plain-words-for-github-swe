@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "GitHub-for-dummies",
+  "name": "Plain Words for GitHub SWE",
   "version": "1.0.0",
   "description": "Förklarar knappar, flikar och menyer på github.com med vardagliga ord på svenska.",
   "icons": {
@@ -10,7 +10,7 @@
     "128": "icons/icon-128.png"
   },
   "action": {
-    "default_title": "GitHub-for-dummies",
+    "default_title": "Plain Words for GitHub SWE",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon-16.png",

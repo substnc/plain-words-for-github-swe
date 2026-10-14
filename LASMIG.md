@@ -1,4 +1,4 @@
-# GitHub-for-dummies
+# Plain Words for GitHub SWE
 
 Ett tillägg till webbläsaren som förklarar GitHub på svenska. Håll musen still över en knapp, flik, meny eller länk på github.com i ungefär en halv sekund, så dyker en svart pratbubbla upp. Den berättar med vardagliga ord vad saken är, och under rubriken Nytta när du har användning av den.
 
@@ -8,12 +8,12 @@ Allt finns redan i tillägget. Det behövs ingen AI, ingen nyckel och ingen inte
 
 Det tar ungefär fem minuter. Du gör det bara en gång.
 
-1. **Hämta filerna.** Gå till sidan för projektet på GitHub: https://github.com/substnc/GitHub-for-dummies. Klicka på den gröna knappen **Code** och sedan på **Download ZIP**.
+1. **Hämta filerna.** Gå till sidan för projektet på GitHub: https://github.com/substnc/plain-words-for-github-swe. Klicka på den gröna knappen **Code** och sedan på **Download ZIP**.
 2. **Packa upp.** Öppna mappen Hämtade filer och dubbelklicka på zip-filen. Nu får du en vanlig mapp. Flytta gärna den mappen till ett ställe där den får ligga kvar, till exempel Dokument. Om du raderar mappen slutar tillägget att fungera.
 3. **Öppna Chromes tilläggssida.** Skriv `chrome://extensions` i adressfältet högst upp i Chrome och tryck Enter.
 4. **Slå på utvecklarläget.** Uppe till höger finns en liten knapp som heter **Utvecklarläge** (på engelska **Developer mode**). Klicka så att den blir påslagen. Det låter farligt men betyder bara att du får lägga in tillägg från din egen dator.
 5. **Lägg in tillägget.** Klicka på knappen **Läs in okomprimerat tillägg** (på engelska **Load unpacked**) som dök upp till vänster. Leta upp mappen från steg 2, öppna den och välj mappen som heter **extension**. Klicka **Välj**.
-6. **Sätt fast ikonen.** Klicka på pusselbiten uppe till höger i Chrome. Klicka på nålen bredvid **GitHub-for-dummies**. Nu syns den svarta pratbubblan med frågetecken i verktygsfältet.
+6. **Sätt fast ikonen.** Klicka på pusselbiten uppe till höger i Chrome. Klicka på nålen bredvid **Plain Words for GitHub SWE**. Nu syns den svarta pratbubblan med frågetecken i verktygsfältet.
 7. **Prova.** Gå till https://github.com/facebook/react och håll musen still över knappen **Star** eller fliken **Issues**.
 
 Chrome kan ibland visa en ruta om att tillägg i utvecklarläge kan vara osäkra. Det gäller tillägg du inte känner till. Det här tillägget läser bara sidor på github.com och skickar ingenting någonstans.
@@ -33,10 +33,10 @@ Safari är krångligare, eftersom Apple kräver att tillägg byggs om till en li
 2. **Öppna Terminal.** Tryck Cmd och mellanslag samtidigt, skriv `Terminal` och tryck Enter. Ett fönster där man skriver kommandon öppnas.
 3. **Gå till mappen.** Skriv `cd` följt av ett mellanslag. Dra sedan in den uppackade mappen från Finder och släpp den i Terminal-fönstret. Tryck Enter.
 4. **Bygg Safari-versionen.** Skriv `bash bygg-safari.sh` och tryck Enter. Vänta tills det står Klart.
-5. **Öppna projektet i Xcode.** Gå in i den nya mappen **safari** och sedan **GitHub-for-dummies**, och dubbelklicka på filen **GitHub-for-dummies.xcodeproj**.
+5. **Öppna projektet i Xcode.** Gå in i den nya mappen **safari** och sedan **Plain Words SWE**, och dubbelklicka på filen **Plain Words SWE.xcodeproj**.
 6. **Starta appen.** Klicka på Play-knappen (en triangel) uppe till vänster i Xcode. Om Xcode frågar om **Team** eller **Signing**: välj ditt namn om det finns, annars **Sign to Run Locally**. En liten app öppnas. Den kan du stänga.
 7. **Tillåt tillägget i Safari.** Öppna Safari och gå till **Safari > Inställningar > Avancerat**. Bocka i **Visa funktioner för webbutvecklare**. Gå sedan till fliken **Utvecklare** i samma inställningsfönster och bocka i **Tillåt osignerade tillägg**. Safari frågar efter ditt lösenord.
-8. **Slå på det.** Gå till fliken **Tillägg** i Safaris inställningar och bocka i **GitHub-for-dummies**. Klicka på tillägget och välj att det får köras på github.com.
+8. **Slå på det.** Gå till fliken **Tillägg** i Safaris inställningar och bocka i **Plain Words SWE**. Klicka på tillägget och välj att det får köras på github.com.
 
 Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du startar om Safari. Då behöver du göra steg 7 igen. Det slipper man bara om tillägget signeras med ett betalt Apple-utvecklarkonto.
 
@@ -96,6 +96,7 @@ Nästan 400 förklaringar finns i filen `extension/explanations.js`. De täcker 
 
 ## Val jag gjorde
 
+- **Namnet byttes 15 oktober 2026** från GitHub-for-dummies till Plain Words for GitHub SWE, eftersom For Dummies är ett skyddat varumärke som förlaget Wiley äger. SWE visar att förklaringarna är på svenska.
 - **Projektet på GitHub fanns redan** som `substnc/GitHub-for-dummies` när jag började, tomt. Jag försökte ändå skapa ett nytt som heter `github-for-dummies`, men GitHub nekade min koppling (felkod 403). Det hade heller inte gått, eftersom GitHub ser stora och små bokstäver som samma namn. Så allt ligger i det befintliga projektet.
 - **Utseendet följer sub.stnc® Dark:** rent svart bakgrund, vit text, grå etikett ovanför, Helvetica Neue och 16 pixlars rundade hörn. Inga skuggor. Jag lade till en tunn mörkgrå kant (`#26282b`, samma som `tile-dim`) runt bubblan så att den syns mot GitHubs mörka läge. Ikonen är en svart pratbubbla med grå kant av samma skäl.
 - **Bubblan visar GitHubs eget namn** på saken överst i grått (till exempel Fork), och förklaringen under. Då lär man sig de engelska orden samtidigt.

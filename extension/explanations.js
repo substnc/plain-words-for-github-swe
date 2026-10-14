@@ -1,5 +1,5 @@
 /*
- * GitHub-for-dummies: alla förklaringar.
+ * Plain Words for GitHub SWE: alla förklaringar.
  *
  * Varje förklaring har:
  *   key        en intern kod (används bara av programmet och testerna)
