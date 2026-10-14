@@ -37,8 +37,6 @@ h1 span { display: block; color: var(--ink-muted); }
 .row input:checked + .switch { background: var(--ink); }
 .row input:checked + .switch::after { transform: translateX(20px); background: var(--bg); }
 .row input:focus-visible + .switch { outline: 2px solid var(--ink); outline-offset: 3px; }
-.status { margin: 16px 0 0; }
-.hint { margin: 8px 0 0; color: var(--ink-muted); font-size: 13px; line-height: 18px; }
 /* Signaturen längst ner: vit namnteckning på svart, med namnet i grått bredvid. */
 .byline {
   display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;

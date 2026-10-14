@@ -397,10 +397,10 @@ async function main() {
     const popup = await context.newPage();
     await popup.goto(`chrome-extension://${extId}/popup.html`);
     await popup.waitForTimeout(200);
-    const startText = await popup.textContent("#status");
+    const startOn = await popup.isChecked("#toggle");
     await popup.click("label.row");
     await popup.waitForTimeout(200);
-    const offText = await popup.textContent("#status");
+    const afterClickOn = await popup.isChecked("#toggle");
 
     await page.bringToFront();
     await park(page);
@@ -419,8 +419,8 @@ async function main() {
     await page.hover("#actions-tab");
     await page.waitForTimeout(700);
     const whenOn = await bubbleState(page);
-    const ok = startText.includes("på") && offText.includes("av") && !whenOff.shown && stillOff && whenOn.shown;
-    return ok ? true : JSON.stringify({ startText, offText, off: whenOff.shown, stillOff, on: whenOn.shown });
+    const ok = startOn && !afterClickOn && !whenOff.shown && stillOff && whenOn.shown;
+    return ok ? true : JSON.stringify({ startOn, afterClickOn, off: whenOff.shown, stillOff, on: whenOn.shown });
   });
 
   // Skärmdumpar

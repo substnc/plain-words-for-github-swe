@@ -5,11 +5,8 @@
   // Safari använder "browser", Chrome använder "chrome".
   var api = typeof browser !== "undefined" && browser && browser.storage ? browser : chrome;
   var toggle = document.getElementById("toggle");
-  var status = document.getElementById("status");
-
   function render(enabled) {
     toggle.checked = enabled;
-    status.textContent = enabled ? "Pratbubblorna är på." : "Pratbubblorna är av.";
   }
 
   function load() {
