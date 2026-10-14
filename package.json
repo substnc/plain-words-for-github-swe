@@ -5,7 +5,10 @@
   "description": "Webbläsartillägg som förklarar GitHub på svenska med vardagliga ord.",
   "scripts": {
     "test": "node tests/check-texts.js && node tests/run-tests.js",
-    "icons": "python3 tools/make_icons.py"
+    "icons": "python3 tools/make_icons.py",
+    "test:live": "node tests/real/live-check.js",
+    "test:sweep": "node tests/real/sweep-real.js",
+    "fetch:pages": "node tests/real/fetch-pages.js"
   },
   "devDependencies": {
     "playwright": "1.56.1"

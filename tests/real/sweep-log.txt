@@ -1,0 +1,17 @@
+repo: 150/151 med förklaring
+repo-nextjs: 233/234 med förklaring
+issues: 118/120 med förklaring
+issue: 204/206 med förklaring
+pulls: 145/146 med förklaring
+pr: 404/413 med förklaring
+pr-files: 43/67 med förklaring
+pr-commits: 34/36 med förklaring
+file: 38/40 med förklaring
+releases: 200/225 med förklaring
+
+Kontroll av de knappar som svepet missade, med musen direkt på elementet
+(i de sparade sidorna saknas GitHubs stil, så andra saker kan ligga ovanpå):
+  Split, Unified, Edit file (utloggad), Open in GitHub Desktop,
+  avatar-länk på Releases, Copy link: alla 6 gav rätt förklaring.
+Resten av de omatchade är tomma element utan text eller namn, eller
+GitHubs dolda rubrik "Navigation Menu" för skärmläsare.

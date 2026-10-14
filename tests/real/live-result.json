@@ -1,0 +1,271 @@
+{
+ "at": "2026-10-13T23:54:33.637Z",
+ "rows": [
+  {
+   "what": "Flik Code",
+   "expected": "tab-code",
+   "got": "tab-code",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Flik Issues",
+   "expected": "tab-issues",
+   "got": "tab-issues",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Flik Pull requests",
+   "expected": "tab-pulls",
+   "got": "tab-pulls",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Flik Actions",
+   "expected": "tab-actions",
+   "got": "tab-actions",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Flik Projects",
+   "expected": "tab-projects",
+   "got": "tab-projects",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Flik Wiki",
+   "expected": "tab-wiki",
+   "got": "tab-wiki",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Flik Security",
+   "expected": "tab-security",
+   "got": "tab-security",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Flik Insights",
+   "expected": "tab-insights",
+   "got": "tab-insights",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Flik Discussions",
+   "expected": "tab-discussions",
+   "got": "tab-discussions",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Star",
+   "expected": "star",
+   "got": "star",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Fork",
+   "expected": "fork",
+   "got": "fork",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Watch (Notifications)",
+   "expected": "watch",
+   "got": "watch",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Gröna Code-knappen",
+   "expected": "code-button",
+   "got": "code-button",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Branch-väljaren",
+   "expected": "branch-picker",
+   "got": "branch-picker",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Branches",
+   "expected": "branches",
+   "got": "branches",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Go to file",
+   "expected": "go-to-file",
+   "got": "go-to-file",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Commits",
+   "expected": "commits",
+   "got": "commits",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "README",
+   "expected": "readme",
+   "got": "readme",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "About",
+   "expected": "about",
+   "got": "about",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Releases",
+   "expected": "releases",
+   "got": "releases",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Sökfältet",
+   "expected": "search",
+   "got": "search",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Sign in",
+   "expected": "sign-in",
+   "got": "sign-in",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Issue: rubrik",
+   "expected": "page-title",
+   "got": "page-title",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Issue: status",
+   "expected": "state-badge",
+   "got": "state-badge",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Issue: New issue",
+   "expected": "new-issue",
+   "got": "new-issue",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Issue: Assignees",
+   "expected": "assignees",
+   "got": "assignees",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Issue: Labels",
+   "expected": "labels",
+   "got": "labels",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Issue: Milestone",
+   "expected": "milestones",
+   "got": "milestones",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "Issue: Development",
+   "expected": "development",
+   "got": "development",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "PR: Conversation",
+   "expected": "pr-conversation",
+   "got": "pr-conversation",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "PR: Commits",
+   "expected": "pr-commits",
+   "got": "pr-commits",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "PR: Checks",
+   "expected": "pr-checks",
+   "got": "pr-checks",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "PR: Files changed",
+   "expected": "pr-files",
+   "got": "pr-files",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "PR: Reviewers",
+   "expected": "reviewers",
+   "got": "reviewers",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "PR: Labels",
+   "expected": "labels",
+   "got": "labels",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "PR: Kopiera branch-namn",
+   "expected": "copy-branch",
+   "got": "copy-branch",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "PR: branch-namn",
+   "expected": "branch-name",
+   "got": "branch-name",
+   "ok": true,
+   "note": ""
+  },
+  {
+   "what": "PR: status (Merged)",
+   "expected": "state-badge",
+   "got": "state-badge",
+   "ok": true,
+   "note": ""
+  }
+ ]
+}

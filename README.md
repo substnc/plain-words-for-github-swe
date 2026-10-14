@@ -9,6 +9,6 @@ Ett webbläsartillägg för Chrome och Safari som förklarar knappar, flikar och
 ## Mappar
 
 - `extension/` själva tillägget. `explanations.js` innehåller alla förklaringar.
-- `tests/` automatiska tester och skärmdumpar.
+- `tests/` automatiska tester och skärmdumpar. `tests/real/` testar mot riktiga github.com-sidor.
 - `tools/make_icons.py` ritar ikonerna.
 - `bygg-safari.sh` gör om tillägget till en Safari-app på en Mac.

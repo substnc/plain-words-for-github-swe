@@ -54,7 +54,7 @@ Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du sta
 
 ## Vad som får förklaring
 
-160 förklaringar finns i filen `extension/explanations.js`. De täcker bland annat:
+202 förklaringar finns i filen `extension/explanations.js`. De täcker bland annat:
 
 - **Toppen av sidan:** sökfältet, plus-menyn och allt i den, notisklockan, din profilmeny, huvudmenyn, GitHub-loggan, Copilot, logga in och skapa konto.
 - **Flikarna i ett projekt:** Code, Issues, Pull requests, Actions, Projects, Wiki, Security, Insights, Settings, Discussions och knappen för fler flikar.
@@ -64,7 +64,11 @@ Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du sta
 - **Historik och fakta:** Commits, enskilda commits, README, License, Code of conduct, Contributing, Security policy, About, Topics, Releases, Packages, Contributors, Languages, Stars, Watchers, Forks, Activity, Used by, Deployments och Report repository.
 - **Inne i en issue:** New issue, sökfältet, Open och Closed, status, Labels, Milestones, Assignees, Type, Projects, Development, Create a branch, Relationships, Subscribe, Participants, Lock, Pin, Transfer, Delete, Comment, Write, Preview, Close issue, Reopen, reaktioner, Edit, Quote reply och Copy link.
 - **Inne i en pull request:** Conversation, Commits, Checks, Files changed, Reviewers, Review changes, Approve, Request changes, Start a review, Merge pull request, Squash and merge, Rebase and merge, Confirm merge, Enable auto-merge, Update branch, Close pull request, Ready for review, Convert to draft, Delete branch, Revert, Resolve conversation, Viewed, Unified, Split och Hide whitespace.
-- **Lite till:** New workflow, Run workflow, Re-run jobs, Draft a new release, Sync fork och Contribute.
+- **Listor med issues och pull requests:** varje rad i listan, filterknapparna (Author, Labels, Milestones, Assignees, Types, Reviews), sortering, visningstäthet, färdiga filter som Assigned to me, sidbläddring, länkade issues och stackar.
+- **Inne i samtal:** författarens namn, tidpunkter, Edited, Load more, Copy link, rubriken, robotar, deployment-rutor, branch-namnen och Force-pushed.
+- **Files changed och Commits:** Changes from all commits, File filter, Conversations, Jump to, Expand all, fäll ihop fil, filnamn, Kopiera commit-koden och Browse repository at this point.
+- **Releases och filsidor:** Find a release, versionernas namn, Assets, Compare, sökvägen, Top, Raw, Blame, Symbols med flera.
+- **Lite till:** Appearance settings, Skip to content, projektets hemsida, Custom properties, Outline, View all files, New workflow, Run workflow, Re-run jobs, Draft a new release, Sync fork och Contribute.
 
 ## Ändra eller lägga till en förklaring
 
@@ -84,11 +88,12 @@ Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du sta
 
 ## Val jag gjorde
 
-- **Projektet på GitHub fanns redan** som `substnc/GitHub-for-dummies` när jag började, tomt. Jag använde det i stället för att skapa ett nytt. Stora och små bokstäver spelar ingen roll i adressen.
+- **Projektet på GitHub fanns redan** som `substnc/GitHub-for-dummies` när jag började, tomt. Jag försökte ändå skapa ett nytt som heter `github-for-dummies`, men GitHub nekade min koppling (felkod 403). Det hade heller inte gått, eftersom GitHub ser stora och små bokstäver som samma namn. Så allt ligger i det befintliga projektet.
 - **Utseendet följer sub.stnc® Dark:** rent svart bakgrund, vit text, grå etikett ovanför, Helvetica Neue och 16 pixlars rundade hörn. Inga skuggor. Jag lade till en tunn mörkgrå kant (`#26282b`, samma som `tile-dim`) runt bubblan så att den syns mot GitHubs mörka läge. Ikonen är en svart pratbubbla med grå kant av samma skäl.
 - **Bubblan visar GitHubs eget namn** på saken överst i grått (till exempel Fork), och förklaringen under. Då lär man sig de engelska orden samtidigt.
 - **Ordet "issue"** fick stå kvar, eftersom det är det GitHub skriver. Det förklaras som en lapp om något som ska fixas. Samma sak med branch, commit och pull request.
-- **Knappar hittas på fem sätt**, i den här ordningen: id, aria-label (och title och placeholder), länkadress, CSS-väljare och sist knapptexten. Siffror som 165k tas bort före jämförelsen.
+- **Knappar hittas på sex sätt**, i den här ordningen: id, aria-label (och title, placeholder och den separata tooltip-text som GitHub ofta använder, aria-labelledby), länkadress, CSS-väljare och sist knapptexten. Siffror som 165k tas bort före jämförelsen.
+- **Listor och menyer som helhet** får aldrig en bubbla för sitt namn. Annars skulle till exempel varje rad i issue-listan få förklaringen för hela listan.
 - **Text som människor har skrivit**, som README-texten och kommentarer, får aldrig någon bubbla även om ett ord råkar vara samma som en knapp.
 - **Länkar med filter**, som listan över bara öppna issues, behandlas inte som själva fliken.
 - **Bubblan försvinner** när du flyttar musen, trycker Esc, klickar, byter flik eller rullar sidan. Efter Esc eller klick kommer den inte tillbaka förrän du har flyttat musen till något annat.
@@ -96,9 +101,14 @@ Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du sta
 
 ## Vad som är testat och inte
 
-- **Testat i Chrome (Chromium):** tillägget laddades i en riktig Chromium och musen hölls över 159 olika saker på fyra sidor: ett projekt, en lista med issues, en issue och en pull request. Alla 159 gav rätt förklaring. Även fördröjningen, Esc, att bubblan håller sig inom skärmen, att GitHubs utseende inte krockar och att på/av-knappen sparar valet testades och fungerade.
-- **Inte testat mot riktiga github.com:** min arbetsmiljö fick inte öppna github.com i en webbläsare. Testsidorna är därför byggda för att efterlikna GitHub, med samma id, knappnamn och länkar som GitHub använder. Jag kontrollerade knapptexterna mot riktiga GitHub-sidor i textform. Det kan ändå finnas knappar där GitHub gör annorlunda än jag trott. Prova själv och skriv ner vilka knappar som inte visar något.
-- **Inte testat i Safari:** det kräver en Mac med Xcode.
-- **Inte testat inloggad:** vissa knappar ser annorlunda ut när man är inloggad, till exempel Merge-knappen och Settings-fliken.
+- **Testat live mot github.com i Chrome (Chromium):** tillägget laddades och musen hölls över 38 av delarna i uppdraget på riktiga sidor (projektet microsoft/vscode, en issue och en pull request i facebook/react, plus vercel/next.js för Discussions). Alla 38 gav rätt förklaring. Resultatet ligger i `tests/real/live-result.json`.
+- **Svep över tio riktiga sidor:** jag sparade tio sidor från github.com (två projekt, issue-lista, en issue, pull request-lista, en pull request med Conversation, Commits och Files changed, en filsida och Releases) och lät musen gå över varenda knapp, flik, länk och rubrik på dem. Där jag hittade saker utan förklaring eller med fel förklaring rättade jag och körde om. Siffrorna står i `tests/real/sweep-log.txt`.
+- **Testsidor med inloggade knappar:** 159 av 159 rätt på mina egna testsidor som härmar GitHub, även fördröjningen, Esc, att bubblan håller sig inom skärmen, att GitHubs utseende inte krockar och att på/av-knappen sparar valet.
 
-Testerna går att köra igen med `npm test` (kräver Node och Playwright).
+**Begränsningar i testerna, ärligt:**
+
+- **Utloggad:** jag kunde inte logga in. Knappar som bara syns inloggad är därför bara testade på mina egna testsidor, inte live: plus-menyn, notisklockan, profilmenyn, Settings-fliken, Add file, Merge-knapparna, Review changes, Approve, Comment-rutan och Close issue.
+- **Utan GitHubs skript:** testmiljön blockerade filerna från github.githubassets.com. Sidorna laddades alltså med GitHubs riktiga innehåll men utan stil och utan skript. Därför kunde menyer som öppnas med ett klick (innehållet i den gröna Code-knappen, branch-listan, plus-menyn) inte öppnas live. De är testade på mina testsidor.
+- **Inte testat i Safari:** det kräver en Mac med Xcode. Kommandot `xcrun` finns inte på Linux, så jag kunde bara skriva skriptet `bygg-safari.sh`.
+
+Testerna går att köra igen: `npm test` för testsidorna, `node tests/real/live-check.js` för live-kontrollen och `node tests/real/fetch-pages.js` följt av `node tests/real/sweep-real.js` för svepet (kräver Node och Playwright). De sparade sidorna läggs inte upp på GitHub, eftersom det är andras innehåll.

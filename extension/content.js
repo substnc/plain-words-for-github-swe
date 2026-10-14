@@ -22,12 +22,20 @@
   var EDGE = 8;
 
   var INTERACTIVE =
-    'a[href], button, summary, input, select, textarea, label, h2, h3, h4, li, span, div[role], ' +
+    'a[href], button, summary, input, select, textarea, label, h2, h3, h4, li, span, ' +
     '[role="button"], [role="tab"], [role="menuitem"], [role="menuitemradio"], [role="menuitemcheckbox"], ' +
     '[role="option"], [role="link"], [role="switch"], [role="checkbox"], [role="radio"], [tabindex], ' +
     '.discussion-sidebar-heading, [class*="sidebar-heading"], [class*="SidebarHeading"]';
 
   var STRATEGIES = ["ids", "aria", "href", "selectors", "texts"];
+
+  // Behållare som listor och menyer har ofta ett namn som "Issues". Det namnet
+  // ska inte smitta av sig på allt som ligger inuti, så dem jämför vi bara med id och CSS.
+  var CONTAINER =
+    'nav, section, ul, ol, main, form, header, aside, table, tbody, dialog, ' +
+    '[role="list"], [role="listbox"], [role="region"], [role="navigation"], [role="group"], [role="toolbar"], ' +
+    '[role="tablist"], [role="menu"], [role="dialog"], [role="grid"], [role="tree"], [role="main"], ' +
+    '[role="search"], [role="banner"], [role="form"], [role="complementary"]';
 
   // Text som folk själva har skrivit (README, kommentarer, kod). Där jämför vi inte knapptext.
   var USER_CONTENT = ".markdown-body, .comment-body, .blob-code, .react-code-lines, .react-blob-print-hide, .js-file-line-container, textarea";
@@ -115,13 +123,28 @@
       if (v) info.aria.push(normalize(v));
     });
 
+    // Många ikonknappar på GitHub har sitt namn i en separat tooltip-text.
+    var labelledBy = el.getAttribute("aria-labelledby");
+    if (labelledBy) {
+      labelledBy.split(/\s+/).forEach(function (ref) {
+        var labelEl = ref && document.getElementById(ref);
+        if (labelEl && labelEl !== el && labelEl.textContent.length < 120) info.aria.push(normalize(labelEl.textContent));
+      });
+    }
+    if (el.id && typeof CSS !== "undefined" && CSS.escape) {
+      var tip = document.querySelector('tool-tip[for="' + CSS.escape(el.id) + '"]');
+      if (tip && tip.textContent.length < 120) info.aria.push(normalize(tip.textContent));
+    }
+
     var href = el.getAttribute("href");
     if (href && href.charAt(0) !== "#" && href.indexOf("javascript:") !== 0) {
       try {
         var url = new URL(href, location.href);
         // Länkar med filter (till exempel ?q=is:open) är inte samma sak som själva fliken.
         var sameSite = url.hostname === "github.com" || url.hostname === location.hostname;
-        if (sameSite && !url.search) info.path = url.pathname;
+        // Länkar till en plats på samma sida (till exempel en kommentar) räknas inte som en adress.
+        var samePage = url.hash && url.pathname === location.pathname;
+        if (sameSite && !url.search && !samePage) info.path = url.pathname;
       } catch (e) {
         /* ogiltig adress, hoppa över */
       }
@@ -180,6 +203,10 @@
   function matchElement(el) {
     var info = readElement(el);
     if (info.text && safeClosest(el, USER_CONTENT)) info.text = null;
+    if (safeMatches(el, CONTAINER)) {
+      info.aria = [];
+      info.text = null;
+    }
     for (var s = 0; s < STRATEGIES.length; s++) {
       var strategy = STRATEGIES[s];
       for (var i = 0; i < entries.length; i++) {

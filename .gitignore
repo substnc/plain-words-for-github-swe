@@ -2,3 +2,5 @@ node_modules/
 tests/last-result.json
 safari/
 .DS_Store
+tests/real/snapshots/
+tests/real/sweep-*.json

@@ -34,10 +34,10 @@
   }
 
   var REPO_NAV = 'nav[aria-label="Repository"], .UnderlineNav, [data-pjax="#repo-content-pjax-container"], .js-repo-nav';
-  var PR_TABS = '.tabnav-tabs, nav[aria-label="Pull request navigation tabs"], [aria-label="Pull request tabs"], .js-pull-request-tabs';
+  var PR_TABS = '.tabnav-tabs, nav[aria-label="Pull request navigation"], nav[aria-label="Pull request navigation tabs"], [aria-label="Pull request tabs"], .js-pull-request-tabs';
   var FILE_TABLE = '[aria-labelledby="folders-and-files"], .react-directory-row, table[aria-labelledby], .js-navigation-container';
   var SEGMENTED = '[aria-label="File view"], .SegmentedControl, [class*="SegmentedControl"], segmented-control';
-  var SIDEBAR = '.Layout-sidebar, .discussion-sidebar, [data-testid="issue-viewer-metadata-pane"], #partial-discussion-sidebar, aside';
+  var SIDEBAR = '.Layout-sidebar, .discussion-sidebar, [data-testid="sidebar-section"], [class*="SidebarSection"], [class*="sidebarSection"], [data-testid="issue-viewer-metadata-pane"], #partial-discussion-sidebar, aside';
 
   globalThis.GFD_EXPLANATIONS = [
     /* ---------------- Toppen av sidan (gäller överallt) ---------------- */
@@ -45,9 +45,9 @@
       key: "search",
       name: "Sök",
       text: "Här söker du efter projekt, kod eller personer på hela GitHub. Tryck på snedstreck / på tangentbordet så hoppar du hit direkt.",
-      aria: ["search or jump to", "search or jump to…", "search or jump to...", /^search github/],
+      aria: [/^search or jump to/, /^search github/],
       selectors: ['[data-target="qbsearch-input.inputButton"]', "qbsearch-input button", ".header-search-button"],
-      texts: ["type / to search", "search or jump to", "search"]
+      texts: ["type / to search", "search or jump to", "search/"]
     },
     {
       key: "plus-menu",
@@ -74,7 +74,7 @@
       key: "global-menu",
       name: "Huvudmenyn",
       text: "Huvudmenyn med genvägar till startsidan, dina issues och dina pull requests (förslag på ändringar). Bra när du vill hoppa mellan saker snabbt.",
-      aria: ["open global navigation menu", "open navigation menu"]
+      aria: ["open global navigation menu", "open navigation menu", "toggle navigation", "close navigation menu", "global navigation menu"]
     },
     {
       key: "home-logo",
@@ -82,6 +82,20 @@
       text: "Tar dig tillbaka till din startsida på GitHub. Där ser du nyheter från projekt och personer du följer.",
       aria: ["homepage", "github homepage", "github"],
       selectors: ['a.AppHeader-logo', 'a.header-logo', 'a[data-hotkey="g d"]']
+    },
+    {
+      key: "appearance",
+      name: "Appearance settings",
+      text: "Ändrar hur GitHub ser ut, till exempel mörkt eller ljust läge. Påverkar bara din skärm.",
+      aria: ["appearance settings", "appearance"]
+    },
+    {
+      key: "skip-to-content",
+      name: "Skip to content",
+      text: "Hoppar förbi menyerna direkt till sidans innehåll. Mest till hjälp för den som använder tangentbordet.",
+      href: [],
+      selectors: ['a[href="#start-of-content"]', "a.js-skip-to-content"],
+      texts: ["skip to content"]
     },
     {
       key: "copilot",
@@ -94,14 +108,14 @@
       key: "your-issues",
       name: "Dina issues",
       text: "Visar alla issues som har med dig att göra, i alla projekt. En issue är en lapp om ett problem eller en idé som ska lösas.",
-      aria: ["your issues", "issues"],
+      aria: ["your issues"],
       href: [/^\/issues\/?$/]
     },
     {
       key: "your-pulls",
       name: "Dina pull requests",
       text: "Visar alla förslag på ändringar som du har gjort eller ska titta på. En pull request är när någon säger: kolla mina ändringar, vill ni lägga in dem?",
-      aria: ["your pull requests", "pull requests"],
+      aria: ["your pull requests"],
       href: [/^\/pulls\/?$/]
     },
     {
@@ -202,6 +216,7 @@
       key: "tab-code",
       name: "Code",
       text: "Projektets startsida med alla filer och mappar. Här ser du själva koden och välkomsttexten.",
+      selectors: ['a[data-tab-item="code"]', 'a[data-tab-item$="code-tab"]'],
       ids: ["code-tab"],
       href: [repo("(/tree/[^/]+)?")],
       texts: ["code"],
@@ -213,6 +228,7 @@
       key: "tab-issues",
       name: "Issues",
       text: "Listan med frågor, felrapporter och idéer för projektet. En issue är som en lapp på anslagstavlan om något som ska fixas.",
+      selectors: ['a[data-tab-item="issues"]', 'a[data-tab-item$="issues-tab"]'],
       ids: ["issues-tab"],
       href: [repo("/issues")],
       texts: ["issues"],
@@ -222,6 +238,7 @@
       key: "tab-pulls",
       name: "Pull requests",
       text: "Förslag på ändringar som väntar på att bli godkända. En pull request är när någon säger: titta på mina ändringar, vill ni lägga in dem?",
+      selectors: ['a[data-tab-item="pull-requests"]', 'a[data-tab-item$="pull-requests-tab"]'],
       ids: ["pull-requests-tab"],
       href: [repo("/pulls")],
       texts: ["pull requests"],
@@ -231,6 +248,7 @@
       key: "tab-actions",
       name: "Actions",
       text: "Små robotar som automatiskt gör jobb åt projektet, till exempel testar koden varje gång något ändras. Grön bock betyder att det gick bra.",
+      selectors: ['a[data-tab-item="actions"]', 'a[data-tab-item$="actions-tab"]'],
       ids: ["actions-tab"],
       href: [repo("/actions")],
       texts: ["actions"],
@@ -240,6 +258,8 @@
       key: "tab-projects",
       name: "Projects",
       text: "Planeringstavlor där arbetet sorteras i kolumner, till exempel Att göra, Pågår och Klart. Bra för att se vem som gör vad.",
+      selectors: ['a[data-tab-item="projects"]', 'a[data-tab-item$="projects-tab"]'],
+      aria: ["select projects", "edit projects", "projects", "filter by projects", "filter by project"],
       ids: ["projects-tab"],
       href: [repo("/projects")],
       texts: ["projects", "project"],
@@ -249,6 +269,7 @@
       key: "tab-wiki",
       name: "Wiki",
       text: "Projektets handbok med sidor som förklarar hur saker fungerar. Läs här när README-texten inte räcker.",
+      selectors: ['a[data-tab-item="wiki"]', 'a[data-tab-item$="wiki-tab"]'],
       ids: ["wiki-tab"],
       href: [repo("/wiki")],
       texts: ["wiki"],
@@ -258,16 +279,18 @@
       key: "tab-security",
       name: "Security",
       text: "Visar säkerhetsvarningar, till exempel om projektet använder en gammal del med kända hål. Här står också hur man rapporterar problem.",
+      selectors: ['a[data-tab-item="security"]', 'a[data-tab-item$="security-tab"]', 'a[data-tab-item="security-and-quality"]'],
       ids: ["security-tab"],
       href: [repo("/security")],
       texts: ["security", "security and quality"],
       tags: ["a", "li"],
-      notWithin: ".markdown-body"
+      notWithin: '.markdown-body, nav[aria-label="Repository files"]'
     },
     {
       key: "tab-insights",
       name: "Insights",
       text: "Statistik om projektet, till exempel hur många som jobbar i det och hur mycket som händer. Bra för att se om projektet lever.",
+      selectors: ['a[data-tab-item="insights"]', 'a[data-tab-item$="insights-tab"]'],
       ids: ["insights-tab"],
       href: [repo("/pulse"), repo("/graphs")],
       texts: ["insights"],
@@ -277,6 +300,7 @@
       key: "tab-settings",
       name: "Settings (projektet)",
       text: "Inställningar för projektet, som namn, vem som får vara med och vad som syns. Bara ägarna ser den här fliken.",
+      selectors: ['a[data-tab-item="settings"]', 'a[data-tab-item$="settings-tab"]'],
       ids: ["settings-tab"],
       href: [repo("/settings")],
       texts: ["settings"],
@@ -287,6 +311,7 @@
       key: "tab-discussions",
       name: "Discussions",
       text: "Ett forum för frågor och idéer som inte är fel i koden. Här pratar man fritt i trådar, ungefär som i en chatt.",
+      selectors: ['a[data-tab-item="discussions"]', 'a[data-tab-item$="discussions-tab"]'],
       ids: ["discussions-tab"],
       href: [repo("/discussions")],
       texts: ["discussions"],
@@ -297,21 +322,22 @@
       name: "Fler flikar",
       text: "Flikar som inte fick plats på skärmen ligger gömda här. Klicka för att se resten.",
       aria: ["more items", "more", "additional navigation options", "open more actions menu"],
-      within: REPO_NAV + ", .AppHeader-localBar"
+      texts: ["more items", "more"],
+      within: REPO_NAV + ', .AppHeader-localBar, nav[aria-label="Repository files"], [class*="UnderlineWrapper"]'
     },
     {
       key: "repo-name",
       name: "Projektets namn",
       text: "Namnet på projektet du tittar på. Klicka för att komma tillbaka till projektets startsida.",
       href: [repo("")],
-      within: ".AppHeader-context, .AppHeader-globalBar, [itemprop=\"name\"], #repository-container-header h1, .AppHeader-context-full"
+      within: "nav[aria-label=\"Breadcrumbs\"], .AppHeader-context, .AppHeader-globalBar, [itemprop=\"name\"], #repository-container-header h1, .AppHeader-context-full"
     },
     {
       key: "owner-name",
       name: "Ägarens namn",
       text: "Personen eller gruppen som äger projektet. Klicka för att se deras andra projekt.",
       href: [/^\/[^/]+\/?$/],
-      within: ".AppHeader-context, .AppHeader-context-full, [itemprop=\"author\"], #repository-container-header h1"
+      within: "nav[aria-label=\"Breadcrumbs\"], .AppHeader-context, .AppHeader-context-full, [itemprop=\"author\"], #repository-container-header h1"
     },
     {
       key: "star",
@@ -433,7 +459,7 @@
       key: "more-actions",
       name: "Fler val (tre prickar)",
       text: "Fler val som inte fick plats, till exempel kopiera länken eller ladda ner. Klicka för att se dem.",
-      aria: ["open more actions menu", "more options", "more file actions", "show more options", "more actions", "comment actions", "show options"],
+      aria: ["open more actions menu", "more options", "more file actions", "show more options", "more actions", "comment actions", "show options", "more items", "issue body actions", "pull request body actions", /^actions for .*comment/, /body actions$/],
       notWithin: REPO_NAV
     },
 
@@ -509,6 +535,7 @@
       key: "open-desktop",
       name: "Open with GitHub Desktop",
       text: "Öppnar projektet i GitHub Desktop, ett vanligt program för datorn. Enklare än att skriva kommandon.",
+      aria: ["open this file in github desktop", /in github desktop$/],
       texts: ["open with github desktop", "github desktop"]
     },
     {
@@ -531,15 +558,15 @@
       name: "Commits",
       text: "Visar historiken, alltså alla sparade ändringar i projektet. En commit är en sparad punkt med en kort text om vad som ändrades.",
       href: [repoPrefix("/commits(/|$)")],
-      texts: ["commits", "commit", "history"],
-      tags: ["a", "button"],
+      texts: ["commits", "commit", "history", /^commits on /],
+      tags: ["a", "button", "h2", "h3"],
       notWithin: PR_TABS
     },
     {
       key: "commit-link",
       name: "En commit",
       text: "En sparad ändring i projektet. Klicka för att se exakt vad som ändrades, rad för rad.",
-      href: [repoPrefix("/commit/[0-9a-f]{6,}")],
+      href: [repoPrefix("/commit/[0-9a-f]{6,}"), repoPrefix("/pull/\\d+/commits/[0-9a-f]{6,}")],
       texts: ["latest commit"]
     },
     {
@@ -578,7 +605,8 @@
       name: "Security policy",
       text: "Berättar hur du i hemlighet säger till ägarna om du hittar ett säkerhetshål. Sådant ska man inte skriva om öppet.",
       selectors: ['a[href$="#security-ov-file"]'],
-      texts: ["security policy"]
+      texts: ["security policy", "security"],
+      tags: ["a", "li", "span", "button"]
     },
     {
       key: "about",
@@ -587,6 +615,19 @@
       texts: ["about"],
       tags: ["h2", "h3"],
       within: SIDEBAR + ", .BorderGrid, .Layout"
+    },
+    {
+      key: "about-website",
+      name: "Projektets hemsida",
+      text: "En länk till projektets egen webbplats. Där finns ofta enklare guider än här på GitHub.",
+      selectors: ['[class*="websiteRow"] a', '.BorderGrid-cell a[role="link"][href^="http"]', 'a[data-testid="repository-website-link"]']
+    },
+    {
+      key: "custom-properties",
+      name: "Custom properties",
+      text: "Extra uppgifter som ägarna har lagt på projektet, till exempel vilket team som ansvarar. Mest för stora organisationer.",
+      href: [repo("/custom-properties")],
+      texts: ["custom properties"]
     },
     {
       key: "topics",
@@ -677,8 +718,8 @@
       name: "Deployments",
       text: "Visar när projektet senast lades ut på riktigt, till exempel som en webbsida som alla kan besöka.",
       href: [repo("/deployments(/.*)?")],
-      texts: ["deployments", "environments"],
-      tags: ["a", "h2", "h3"]
+      texts: ["deployments", "environments", "view deployment", "deployed", "show environments", "hide environments", "hide environments show environments", /successfully deployed$/, /^this branch was successfully deployed/],
+      tags: ["a", "h2", "h3", "button", "summary"]
     },
     {
       key: "folder-row",
@@ -693,6 +734,19 @@
       text: "En fil i projektet. Klicka för att läsa innehållet.",
       href: [repoPrefix("/blob/")],
       within: FILE_TABLE
+    },
+    {
+      key: "view-all-files",
+      name: "View all files",
+      text: "Visar hela listan med filer och mappar när den har kortats ner.",
+      selectors: ['[data-testid="view-all-files-row"] button'],
+      texts: ["view all files"]
+    },
+    {
+      key: "outline",
+      name: "Outline",
+      text: "Visar en innehållsförteckning över texten. Klicka på en rubrik för att hoppa dit.",
+      aria: ["outline", "table of contents"]
     },
     {
       key: "view-code",
@@ -733,7 +787,7 @@
       key: "edit-file",
       name: "Ändra filen (pennan)",
       text: "Ändrar filen direkt i webbläsaren. När du sparar blir det en commit, alltså en sparad punkt i historiken.",
-      aria: ["edit file", "edit this file", /^edit the file/, "edit in place"],
+      aria: ["edit file", "edit this file", /^edit the file/, "edit in place", /^you must be signed in and have push access/],
       href: [repoPrefix("/edit/")]
     },
     {
@@ -757,7 +811,7 @@
       text: "Skapar en ny issue, alltså en lapp om ett problem, en fråga eller en idé. Beskriv tydligt vad som hänt så blir det lättare att hjälpa dig.",
       href: [repoPrefix("/issues/new")],
       texts: ["new issue", "create new issue", "submit new issue"],
-      tags: ["a", "button"]
+      tags: ["a", "button", "summary"]
     },
     {
       key: "create-issue",
@@ -771,8 +825,77 @@
       key: "issues-filter",
       name: "Sök och filtrera",
       text: "Söker bland issues eller förslag, till exempel bara öppna eller bara dina egna. Skriv ett ord för att hitta rätt snabbt.",
-      aria: ["search issues", "search all issues", "filter issues", "search pull requests", "search all pull requests", "filter", "filter pull requests"],
+      aria: ["search issues", "search all issues", "filter issues", "clear filter", "search pull requests", "search all pull requests", "filter", "filter pull requests"],
       selectors: ['input#js-issues-search', 'input[name="q"][placeholder*="is:"]']
+    },
+    {
+      key: "list-search-button",
+      name: "Sök",
+      text: "Söker bland issues eller förslag i just det här projektet med det du har skrivit i rutan.",
+      aria: ["search"],
+      texts: ["search"],
+      tags: ["button"],
+      page: repo("/(issues|pulls|discussions)")
+    },
+    {
+      key: "issue-link",
+      name: "En issue",
+      text: "En issue, alltså en lapp om ett problem eller en idé. Klicka för att läsa hela och se svaren.",
+      selectors: ['a[data-testid="issue-listitem-title-link"]', 'a[data-testid="listitem-title-link"][href*="/issues/"]', 'h3:has(> a[data-testid="issue-listitem-title-link"])', 'h3:has(> a[data-testid="listitem-title-link"][href*="/issues/"])', 'a[id^="issue_"][href*="/issues/"]'],
+      href: [repo("/issues/\\d+")]
+    },
+    {
+      key: "pull-link",
+      name: "En pull request",
+      text: "Ett förslag på ändringar. Klicka för att läsa det, se ändringarna och vad andra tycker.",
+      selectors: ['a[data-testid="listitem-title-link"][href*="/pull/"]', 'h3:has(> a[data-testid="listitem-title-link"][href*="/pull/"])', 'a[data-testid="pr-listitem-title-link"]', 'a[id^="issue_"][href*="/pull/"]', "a.js-navigation-open[href*='/pull/']"],
+      href: [repo("/pull/\\d+")],
+      notWithin: PR_TABS
+    },
+    {
+      key: "filter-by",
+      name: "Filter",
+      text: "Visar bara det som matchar ditt val, till exempel det som en viss person har skrivit. Resten göms tills du tar bort filtret.",
+      aria: [/^filter by (?!labels?( |$)|milestones?$|assignees?$|projects?$)/, /^commits by /],
+      texts: [/^filter by /],
+      selectors: ['a[data-testid="author-filter-link"]']
+    },
+    {
+      key: "sort-by",
+      name: "Sortera",
+      text: "Ändrar ordningen på listan, till exempel nyast eller flest kommentarer först.",
+      aria: [/^sort by/, "sort"],
+      texts: ["sort", "newest", "oldest"],
+      tags: ["button", "summary"]
+    },
+    {
+      key: "density",
+      name: "Visningstäthet",
+      text: "Ändrar hur tätt listan visas, luftigt eller kompakt. Påverkar bara hur det ser ut för dig.",
+      aria: [/display density$/]
+    },
+    {
+      key: "saved-views",
+      name: "Färdiga filter",
+      text: "Snabbval som visar issues som rör dig, till exempel sådana du skapat eller blivit nämnd i. Klicka för att filtrera listan.",
+      texts: ["assigned to me", "created by me", "mentioned", "recent activity", "views", "your views", "open issues", "issues", "pull requests"],
+      within: '[class*="SavedViews"], [aria-label="Issues sidebar"], aside, [class*="SidebarNavigation"], [data-testid="issues-sidebar"]'
+    },
+    {
+      key: "collapse-sidebar",
+      name: "Fäll ihop sidomenyn",
+      text: "Döljer eller visar menyn till vänster, så att du får mer plats för listan.",
+      aria: ["collapse sidebar", "expand sidebar"],
+      texts: ["collapse sidebar", "expand sidebar"]
+    },
+    {
+      key: "pagination",
+      name: "Sidor",
+      text: "Listan är uppdelad på flera sidor. Klicka för att bläddra till nästa eller en annan sida.",
+      aria: ["page", "next page", "previous page", /^page /],
+      texts: ["next", "previous"],
+      selectors: ['nav[aria-label="Pagination"] a', ".pagination a", '[class*="Pagination"] a'],
+      tags: ["a", "button"]
     },
     {
       key: "list-open",
@@ -794,14 +917,15 @@
       key: "state-badge",
       name: "Status",
       text: "Visar läget: Open betyder inte klart än, Closed betyder klart, och Merged betyder att ändringarna är inlagda. Draft betyder att det är ett utkast.",
-      selectors: ['[title^="Status:"]', ".State", '[data-testid="header-state"]', '[class*="StateLabel"]'],
+      selectors: ['[title^="Status:"]', ".State", '[data-testid="header-state"]', '[class*="StateLabel"]', 'a[href*="state%3Aclosed%20reason"]', 'a[href*="reason%3Acompleted"]', 'a[href*="reason%3Anot-planned"]'],
       tags: ["span", "div", "a"]
     },
     {
       key: "labels",
       name: "Labels",
       text: "Etiketter är färgade lappar som sorterar ärenden, till exempel bugg eller idé. Här väljer eller ser du vilka som passar.",
-      aria: ["edit labels", "select labels", "labels", "label"],
+      aria: ["edit labels", "select labels", "labels", "label", /^filter by labels?( |$)/],
+      selectors: ['a[href*="label%3A"]', 'a[href*="label:"]', "a.IssueLabel", 'a[class*="IssueLabel"]', '[data-testid="issue-labels"] a'],
       href: [repo("/labels"), repoPrefix("/labels/")],
       texts: ["labels", "label"],
       tags: ["a", "button", "summary", "h2", "h3", "span", "li"]
@@ -810,7 +934,7 @@
       key: "milestones",
       name: "Milestones",
       text: "En milstolpe samlar ärenden som ska vara klara till ett visst mål, till exempel nästa version. Bra för att se hur långt man har kvar.",
-      aria: ["edit milestone", "select milestones", "milestone", "milestones"],
+      aria: ["edit milestone", "select milestones", "milestone", "milestones", /^filter by milestones?$/],
       href: [repo("/milestones"), repoPrefix("/milestone/")],
       texts: ["milestones", "milestone", "no milestone"],
       tags: ["a", "button", "summary", "h2", "h3", "span", "li"]
@@ -819,7 +943,7 @@
       key: "assignees",
       name: "Assignees",
       text: "Visar vem som ansvarar för att lösa det här. Du kan lägga till någon, eller dig själv.",
-      aria: ["edit assignees", "select assignees", "assignees", "assignee"],
+      aria: ["edit assignees", "select assignees", "assignees", "assignee", /^filter by assignees?$/, /^filter by assignee /],
       texts: ["assignees", "assignee", "assign yourself", "no one assigned"],
       tags: ["a", "button", "summary", "h2", "h3", "span", "li"]
     },
@@ -836,7 +960,7 @@
       key: "development",
       name: "Development",
       text: "Kopplar ihop ärendet med en branch (en egen arbetskopia) eller en pull request som löser det. När förslaget läggs in stängs ärendet automatiskt.",
-      aria: ["link a branch, pull request, or commit", "edit development", /^development/],
+      aria: ["link a branch, pull request, or commit", "edit development", /^development/, "link issues"],
       texts: ["development"],
       tags: ["button", "summary", "h2", "h3", "span"]
     },
@@ -944,7 +1068,7 @@
       key: "reactions",
       name: "Reaktioner (emoji)",
       text: "Svara med en emoji i stället för att skriva, till exempel tumme upp. Ett snabbt sätt att hålla med utan att skapa mer text.",
-      aria: ["add or remove reactions", "add reaction", "all reactions", "reactions", /^react with/],
+      aria: ["add or remove reactions", "add reaction", "all reactions", "reactions", /^react with/, /reactions?$/, /^reactions/],
       selectors: ['.social-reaction-summary-item', 'button[data-testid="reaction-button"]']
     },
     {
@@ -957,6 +1081,39 @@
       notWithin: '[role="tablist"]'
     },
     {
+      key: "timestamp",
+      name: "Tidpunkt",
+      text: "När texten skrevs. Klicka för att få en direktlänk till just den här kommentaren.",
+      selectors: ['a[data-testid="issue-body-header-link"]', "a:has(> relative-time)", 'a[data-testid*="timestamp"]', "a.js-timestamp"]
+    },
+    {
+      key: "edit-history",
+      name: "Edited",
+      text: "Visar att texten har ändrats efter att den skrevs. Klicka för att se vad som ändrades.",
+      texts: [/^last edited by /, "edited", /^edited by /],
+      tags: ["button", "summary", "span"]
+    },
+    {
+      key: "load-more",
+      name: "Load more",
+      text: "Samtalet är långt, så en del är gömt. Klicka för att visa resten.",
+      texts: ["load more", "remaining items", "hidden items", /^load more/],
+      tags: ["button", "h3", "span"]
+    },
+    {
+      key: "linked-issues",
+      name: "Länkade issues",
+      text: "Visar vilka issues som stängs automatiskt när det här förslaget läggs in.",
+      aria: [/^linked issues? for /, /linked issues?$/],
+      href: [repo("/issues/\\d+/linked_closing_reference")]
+    },
+    {
+      key: "pr-stack",
+      name: "Stack",
+      text: "Förslaget är en del av en serie förslag som bygger på varandra. Siffrorna visar vilken i ordningen det är.",
+      aria: [/^pull request stack/]
+    },
+    {
       key: "quote-reply",
       name: "Quote reply",
       text: "Svarar på kommentaren och citerar den, så att alla ser vad du svarar på.",
@@ -966,13 +1123,17 @@
       key: "copy-link",
       name: "Copy link",
       text: "Kopierar en direktlänk till just den här kommentaren, så att du kan skicka den till någon.",
+      aria: ["copy link"],
       texts: ["copy link"]
     },
     {
       key: "mention",
       name: "Ett @namn",
       text: "Ett användarnamn på GitHub. Klicka för att se personens profil.",
-      selectors: ["a.user-mention", "a.author", '[data-hovercard-type="user"]', 'a[data-testid="issue-body-header-author"]']
+      aria: [/'s profile$/],
+      href: [new RegExp("^/" + RESERVED + "[^/]+/?$", "i")],
+      notWithin: '[data-listview-component="items-list"], nav[aria-label="Breadcrumbs"], .AppHeader-context, #repository-container-header h1',
+      selectors: ['a[data-testid="issue-body-header-author"]', 'a[data-testid="avatar-link"]', 'a[data-testid="actor-link"]', '[data-testid="comment-header"] a[class*="authorLink"]', '[data-testid="comment-header"] a[href^="/"]:not([href*="/issues/"]):not([href*="/pull/"])', "a.user-mention", "a.author", '[data-hovercard-type="user"]', 'a[data-testid="issue-body-header-author"]']
     },
 
     /* ---------------- Pull requests ---------------- */
@@ -980,7 +1141,7 @@
       key: "new-pull",
       name: "New pull request",
       text: "Föreslår att dina ändringar ska läggas in i projektet. En pull request är ett förslag som andra kan läsa, kommentera och godkänna.",
-      href: [repoPrefix("/compare"), repoPrefix("/pull/new/")],
+      href: [repo("/compare"), repoPrefix("/pull/new/")],
       texts: ["new pull request", "create pull request", "compare & pull request", "create draft pull request"],
       tags: ["a", "button"]
     },
@@ -1029,8 +1190,8 @@
       key: "reviewers",
       name: "Reviewers",
       text: "Personer som ska läsa igenom och godkänna ändringarna innan de läggs in. En extra kontroll så att inget går sönder.",
-      aria: ["request a review", "edit reviewers", "select reviewers", "reviewers", "request review"],
-      texts: ["reviewers", "reviewer", "no reviews"],
+      aria: ["request a review", "edit reviewers", "select reviewers", "reviewers", "request review", /^awaiting requested review/],
+      texts: ["reviewers", "reviewer", "no reviews", /^more reviewers?$/],
       tags: ["a", "button", "summary", "h2", "h3", "span"]
     },
     {
@@ -1151,6 +1312,7 @@
     {
       key: "viewed",
       name: "Viewed",
+      selectors: ["input.js-reviewed-checkbox", 'input[name="viewed"]'],
       text: "Bocka i när du har läst filen, så fälls den ihop och du vet var du är.",
       texts: ["viewed"],
       tags: ["label", "input", "button", "span"]
@@ -1159,12 +1321,14 @@
       key: "diff-unified",
       name: "Unified",
       text: "Visar gammal och ny kod i samma ruta, ovanför varandra.",
+      selectors: ['input[value="unified"]'],
       texts: ["unified"]
     },
     {
       key: "diff-split",
       name: "Split",
       text: "Visar gammal kod till vänster och ny kod till höger, sida vid sida.",
+      selectors: ['input[value="split"]'],
       texts: ["split"]
     },
     {
@@ -1181,6 +1345,121 @@
       texts: ["suggest change", "commit suggestion", "add suggestion to batch"]
     },
 
+    {
+      key: "branch-name",
+      name: "Branch-namn",
+      text: "Namnet på en branch, alltså en arbetskopia av projektet. Förslaget vill flytta ändringar från den ena till den andra.",
+      selectors: ['a[data-component="BranchName"]', '[class*="BranchName"]', ".commit-ref a", ".head-ref a", ".base-ref a"]
+    },
+    {
+      key: "force-pushed",
+      name: "Force-pushed",
+      text: "Någon har ersatt tidigare sparade ändringar i förslaget med nya. Klicka för att se skillnaden.",
+      texts: ["force-pushed", "force pushed"]
+    },
+    {
+      key: "page-title",
+      name: "Rubrik",
+      text: "Rubriken på den här issuen eller pull requesten. Den säger kort vad saken handlar om.",
+      selectors: ['[data-testid="issue-title"]', "bdi.markdown-title", "h1.gh-header-title", 'h1[data-component="PH_Title"]', 'h2:has(> bdi.markdown-title)', '[class*="PageHeader"] h1', '[class*="PageHeader"] h2']
+    },
+    {
+      key: "bot",
+      name: "Robot",
+      text: "En robot, alltså ett automatiskt program som hjälper projektet, till exempel med tester eller uppdateringar.",
+      href: [/^\/apps\/[^/]+\/?$/],
+      texts: [/ bot$/]
+    },
+    {
+      key: "close-dialog",
+      name: "Stäng",
+      text: "Stänger rutan utan att ändra något.",
+      aria: ["close dialog", "close", "dismiss", "close modal"]
+    },
+    {
+      key: "view-reviewed-changes",
+      name: "View reviewed changes",
+      text: "Visar exakt vilka ändringar granskaren tittade på när hen lämnade sin granskning.",
+      texts: ["view reviewed changes", "view changes"]
+    },
+    {
+      key: "commit-message",
+      name: "Hela beskrivningen",
+      text: "Visar hela texten som skrevs när ändringen sparades. Ofta står det mer om varför.",
+      aria: ["commit message body", "show commit message", "toggle commit message"]
+    },
+    {
+      key: "copy-sha",
+      name: "Kopiera commit-koden",
+      text: "Kopierar den unika koden för den här sparade ändringen. Varje commit har en egen kod, ungefär som ett kvittonummer.",
+      aria: [/^copy full sha/, /^copy the full sha/, /^copy sha/]
+    },
+    {
+      key: "browse-at-commit",
+      name: "Browse repository at this point",
+      text: "Visar hur hela projektet såg ut precis efter den här ändringen. Som att bläddra tillbaka i tiden.",
+      aria: ["browse repository at this point", /^browse the repository at this point/, "view code at this point"]
+    },
+    {
+      key: "commit-range",
+      name: "Välj commits",
+      text: "Väljer vilka sparade ändringar (commits) du vill se. Från början visas alla.",
+      texts: [/^changes from /, "all commits"],
+      tags: ["summary", "button"]
+    },
+    {
+      key: "file-filter",
+      name: "File filter",
+      text: "Visar bara vissa sorters filer, till exempel bara bilder eller bara kod.",
+      texts: ["file filter"],
+      tags: ["summary", "button"]
+    },
+    {
+      key: "conversations-jump",
+      name: "Conversations",
+      text: "Hoppar mellan de kommentarer som granskarna har skrivit direkt i koden.",
+      texts: ["conversations"],
+      tags: ["summary", "button"]
+    },
+    {
+      key: "jump-to",
+      name: "Jump to",
+      text: "Hoppar direkt till en viss fil eller version i listan.",
+      texts: ["jump to", "jump to file", "jump to release"],
+      tags: ["summary", "button"]
+    },
+    {
+      key: "toggle-diff",
+      name: "Fäll ihop filen",
+      text: "Fäller ihop eller visar ändringarna i den här filen, så att listan blir kortare.",
+      aria: ["toggle diff contents", "collapse file", "expand file"]
+    },
+    {
+      key: "expand-all",
+      name: "Expand all",
+      text: "Visar hela filen, inte bara raderna runt det som ändrats.",
+      aria: ["expand all", "expand all lines", /^expand (up|down)/],
+      texts: ["expand all"]
+    },
+    {
+      key: "diff-file-name",
+      name: "Filnamn",
+      text: "Namnet på en fil som har ändrats. Klicka för att hoppa till just den filen.",
+      selectors: ['a[href^="#diff-"]', ".file-info a.Link--primary"]
+    },
+    {
+      key: "file-breadcrumb",
+      name: "Sökvägen",
+      text: "Visar var i projektets mappar du är just nu. Klicka på ett namn för att gå tillbaka dit.",
+      selectors: ['[data-testid="breadcrumbs"] a', '[data-testid="breadcrumbs-repo-link"]', "#repos-header-breadcrumb a", ".js-path-segment a"]
+    },
+    {
+      key: "back-to-top",
+      name: "Top",
+      text: "Hoppar tillbaka till början av filen.",
+      texts: ["top", "back to top"],
+      tags: ["button", "a"]
+    },
     /* ---------------- Actions och Releases ---------------- */
     {
       key: "new-workflow",
@@ -1207,6 +1486,32 @@
       text: "Ger ut en ny färdig version av projektet med namn, beskrivning och filer att ladda ner.",
       href: [repoPrefix("/releases/new")],
       texts: ["draft a new release", "create a new release", "new release"]
+    },
+    {
+      key: "find-release",
+      name: "Find a release",
+      text: "Söker bland projektets utgivna versioner. Skriv till exempel ett versionsnummer.",
+      aria: ["find a release", "search releases"]
+    },
+    {
+      key: "release-name",
+      name: "En version",
+      text: "En utgiven version av projektet. Här står vad som är nytt i just den versionen.",
+      selectors: ['a[href^="#release-"]', 'h2 a[href*="/releases/tag/"]', '[data-testid="release-card"] h2 a']
+    },
+    {
+      key: "release-compare",
+      name: "Compare",
+      text: "Jämför två versioner av projektet och visar vad som har ändrats mellan dem.",
+      texts: ["compare"],
+      tags: ["button", "summary", "a"]
+    },
+    {
+      key: "release-assets",
+      name: "Assets",
+      text: "Filerna som hör till versionen, till exempel färdiga program eller koden som zip-fil. Klicka för att visa dem.",
+      texts: ["assets"],
+      tags: ["summary", "button", "h2", "h3", "span"]
     },
     {
       key: "sync-fork",
