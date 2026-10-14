@@ -1,4 +1,4 @@
-/* Utseende: sub.stnc® Dark. Svart bakgrund, vit text, grå etiketter, inga skuggor. */
+/* Utseende: svart bakgrund, vit text, grå etiketter, inga skuggor. */
 :root {
   --bg: #000000;
   --ink: #ffffff;
@@ -39,4 +39,11 @@ h1 span { display: block; color: var(--ink-muted); }
 .row input:focus-visible + .switch { outline: 2px solid var(--ink); outline-offset: 3px; }
 .status { margin: 16px 0 0; }
 .hint { margin: 8px 0 0; color: var(--ink-muted); font-size: 13px; line-height: 18px; }
+/* Signaturen längst ner: vit namnteckning på svart, med namnet i grått bredvid. */
+.byline {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;
+  margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--tile-dim);
+}
+.signature { display: block; height: 48px; width: auto; }
+.by { color: var(--ink-muted); font-size: 13px; line-height: 18px; padding-bottom: 4px; white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { .switch, .switch::after { transition: none; } }

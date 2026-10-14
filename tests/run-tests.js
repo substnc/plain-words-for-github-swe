@@ -363,7 +363,7 @@ async function main() {
     return st.shown && st.rect.bottom <= st.vh && st.rect.top >= 0 ? true : JSON.stringify(st.rect) + " vh=" + st.vh;
   });
 
-  await check("Bubblan har sub.stnc® Dark-bakgrund (svart)", async () => {
+  await check("Bubblan har svart bakgrund", async () => {
     const st = await bubbleState(page);
     return st.bg === "rgb(0, 0, 0)" ? true : st.bg;
   });

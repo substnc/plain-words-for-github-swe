@@ -12,7 +12,7 @@ fi
 xcrun safari-web-extension-converter extension \
   --project-location safari \
   --app-name "Plain Words SWE" \
-  --bundle-identifier design.substnc.PlainWordsSWE \
+  --bundle-identifier com.anthonbackstrom.PlainWordsSWE \
   --swift \
   --macos-only \
   --copy-resources \

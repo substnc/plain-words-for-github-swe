@@ -96,9 +96,10 @@ Nästan 400 förklaringar finns i filen `extension/explanations.js`. De täcker 
 
 ## Val jag gjorde
 
+- **Rutan som öppnas från ikonen** är signerad med Anthon Bäckströms namnteckning längst ner.
 - **Namnet byttes 15 oktober 2026** från GitHub-for-dummies till Plain Words for GitHub SWE, eftersom For Dummies är ett skyddat varumärke som förlaget Wiley äger. SWE visar att förklaringarna är på svenska.
 - **Projektet på GitHub fanns redan** som `substnc/GitHub-for-dummies` när jag började, tomt. Jag försökte ändå skapa ett nytt som heter `github-for-dummies`, men GitHub nekade min koppling (felkod 403). Det hade heller inte gått, eftersom GitHub ser stora och små bokstäver som samma namn. Så allt ligger i det befintliga projektet.
-- **Utseendet följer sub.stnc® Dark:** rent svart bakgrund, vit text, grå etikett ovanför, Helvetica Neue och 16 pixlars rundade hörn. Inga skuggor. Jag lade till en tunn mörkgrå kant (`#26282b`, samma som `tile-dim`) runt bubblan så att den syns mot GitHubs mörka läge. Ikonen är en svart pratbubbla med grå kant av samma skäl.
+- **Utseendet:** rent svart bakgrund, vit text, grå etikett ovanför, Helvetica Neue och 16 pixlars rundade hörn. Inga skuggor. Jag lade till en tunn mörkgrå kant (`#26282b`, samma som `tile-dim`) runt bubblan så att den syns mot GitHubs mörka läge. Ikonen är en svart pratbubbla med grå kant av samma skäl.
 - **Bubblan visar GitHubs eget namn** på saken överst i grått (till exempel Fork), och förklaringen under. Då lär man sig de engelska orden samtidigt.
 - **Varje förklaring har en rad om nyttan**, under en tunn linje och rubriken Nytta. Den börjar alltid med "När du" och berättar i vilken situation saken hjälper dig. Det är lättare att komma ihåg en knapp när man vet vad man ska ha den till.
 - **Ordet "issue"** fick stå kvar, eftersom det är det GitHub skriver. Det förklaras som en lapp om något som ska fixas. Samma sak med branch, commit och pull request.

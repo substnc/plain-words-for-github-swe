@@ -239,7 +239,7 @@
   host.id = "gfd-host";
   host.setAttribute("aria-hidden", "true");
   var shadow = host.attachShadow({ mode: "open" });
-  // Utseende: sub.stnc® Dark (svart bakgrund, vit text, grå etikett, Helvetica Neue, 16px rundning).
+  // Utseende: svart bakgrund, vit text, grå etikett, Helvetica Neue, 16 pixlars rundning.
   shadow.innerHTML =
     "<style>" +
     ":host{all:initial;}" +

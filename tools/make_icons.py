@@ -1,4 +1,4 @@
-"""Ritar tilläggets ikoner i sub.stnc® Dark: en svart pratbubbla med vitt frågetecken och grå kant."""
+"""Ritar tilläggets ikoner: en svart pratbubbla med vitt frågetecken och grå kant."""
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
