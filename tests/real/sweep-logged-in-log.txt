@@ -1,0 +1,20 @@
+Svep inloggad i Chrome, 15 oktober 2026, konto substnc.
+Skript: tests/real/sweep-in-browser.js. Siffran är antal saker med förklaring av antal saker på sidan.
+
+Sida                                          Före     Efter första rättningen
+Startsidan, huvudmenyn öppen                  22/48    55/67 (sidan laddade fler saker andra gången)
+substnc/GitHub-for-dummies, Code-menyn öppen  67/82    92/93 (den som saknas är en tom rubrik)
+react/react/issues                            118/132  132/132
+react/react/issues/37837                      55/81    81/81
+react/react/pull/37838                        69/113   106/113
+/notifications                                20/73    84/84
+/substnc, profilmenyn öppen                   8/34     49/51
+/settings/profile                             19/96    83/96
+substnc/GitHub-for-dummies/settings           21/92    111/115
+
+Allt som fortfarande saknades i kolumnen Efter har fått förklaringar efteråt,
+men de är inte svepta igen i Chrome: Copilot-rutan och listorna på startsidan,
+kommentarsrubriker och testbocken i ändringsförslag, rubrikerna och några länkar
+i kontoinställningarna, fyra saker i projektinställningarna och två i profilen.
+
+Alla förklaringar som visades hade raden Nytta.

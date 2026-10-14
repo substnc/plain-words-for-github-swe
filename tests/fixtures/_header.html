@@ -65,6 +65,27 @@
   <li class="ActionListItem"><a href="/logout" class="ActionListContent"><span class="ActionListItem-label">Sign out</span></a></li>
 </ul>
 
+<!-- Huvudmenyn (de tre strecken), som om den vore öppen och inloggad -->
+<nav aria-label="Global" id="test-global-nav" style="display:flex;flex-wrap:wrap;gap:12px;padding:4px 16px;margin:0">
+  <ul role="list" class="ActionListWrap" style="display:flex;flex-wrap:wrap;gap:12px;list-style:none;padding:0;margin:0">
+    <li class="ActionListItem"><a href="/dashboard" class="ActionListContent"><span class="ActionListItem-label">Home</span></a></li>
+    <li class="ActionListItem"><a href="/issues" class="ActionListContent"><span class="ActionListItem-label">All issues</span></a></li>
+    <li class="ActionListItem"><a href="/pulls" class="ActionListContent"><span class="ActionListItem-label">All pull requests</span></a></li>
+    <li class="ActionListItem"><a href="/octocat?tab=repositories" class="ActionListContent"><span class="ActionListItem-label">All repositories</span></a></li>
+    <li class="ActionListItem"><a href="/octocat?tab=projects" class="ActionListContent"><span class="ActionListItem-label">Projects</span></a></li>
+    <li class="ActionListItem"><a href="/discussions" class="ActionListContent"><span class="ActionListItem-label">Discussions</span></a></li>
+    <li class="ActionListItem"><a href="/codespaces" class="ActionListContent"><span class="ActionListItem-label">Codespaces</span></a></li>
+    <li class="ActionListItem"><a href="/copilot" class="ActionListContent"><span class="ActionListItem-label">Copilot</span></a></li>
+    <li class="ActionListItem"><a href="/explore" class="ActionListContent"><span class="ActionListItem-label">Explore</span></a></li>
+    <li class="ActionListItem"><a href="/marketplace" class="ActionListContent"><span class="ActionListItem-label">Marketplace</span></a></li>
+    <li class="ActionListItem"><a href="/mcp" class="ActionListContent"><span class="ActionListItem-label">MCP registry</span></a></li>
+  </ul>
+  <h2 class="ActionList-sectionDivider-title" style="font-size:12px;margin:0">Top repositories</h2>
+  <ul role="list" class="ActionListWrap" style="display:flex;gap:12px;list-style:none;padding:0;margin:0">
+    <li class="ActionListItem"><a href="/octocat/hello-world" class="ActionListContent"><span class="ActionListItem-label">octocat/hello-world</span></a></li>
+  </ul>
+</nav>
+
 <div id="repository-container-header" class="pt-3 hide-full-screen">
   <div class="d-flex flex-nowrap flex-justify-end mb-3 px-3 px-lg-5">
     <div id="repository-details-container" class="flex-shrink-0">

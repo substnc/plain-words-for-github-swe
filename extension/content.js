@@ -252,13 +252,20 @@
     ".bubble.show{opacity:1;visibility:visible;}" +
     ".name{display:block;font-weight:400;font-size:13px;line-height:18px;color:#7f7f7f;margin:0 0 8px;}" +
     ".text{display:block;margin:0;font-weight:400;}" +
+    ".use{display:block;margin:10px 0 0;padding:10px 0 0;border-top:1px solid #26282b;}" +
+    ".use[hidden]{display:none;}" +
+    ".use-label{display:block;font-size:13px;line-height:18px;color:#7f7f7f;margin:0 0 4px;}" +
+    ".use-text{display:block;margin:0;font-weight:400;}" +
     "@media (prefers-reduced-motion:reduce){.bubble{transition:none;}}" +
     "</style>" +
-    '<div class="bubble" role="tooltip"><span class="name"></span><span class="text"></span></div>';
+    '<div class="bubble" role="tooltip"><span class="name"></span><span class="text"></span>' +
+    '<span class="use"><span class="use-label">Nytta</span><span class="use-text"></span></span></div>';
 
   var bubble = shadow.querySelector(".bubble");
   var nameEl = shadow.querySelector(".name");
   var textEl = shadow.querySelector(".text");
+  var useEl = shadow.querySelector(".use");
+  var useTextEl = shadow.querySelector(".use-text");
 
   function attachHost() {
     if (!host.isConnected) (document.body || document.documentElement).appendChild(host);
@@ -289,6 +296,9 @@
     attachHost();
     nameEl.textContent = entry.name;
     textEl.textContent = entry.text;
+    // Nyttan: när man har användning av saken. Raden göms om den saknas.
+    useTextEl.textContent = entry.use || "";
+    useEl.hidden = !entry.use;
     bubble.setAttribute("data-key", entry.key);
     bubble.classList.remove("show");
     bubble.style.left = "0px";

@@ -1,6 +1,6 @@
 # GitHub-for-dummies
 
-Ett tillägg till webbläsaren som förklarar GitHub på svenska. Håll musen still över en knapp, flik, meny eller länk på github.com i ungefär en halv sekund, så dyker en svart pratbubbla upp. Den berättar med vardagliga ord vad saken gör och när man använder den.
+Ett tillägg till webbläsaren som förklarar GitHub på svenska. Håll musen still över en knapp, flik, meny eller länk på github.com i ungefär en halv sekund, så dyker en svart pratbubbla upp. Den berättar med vardagliga ord vad saken är, och under rubriken Nytta när du har användning av den.
 
 Allt finns redan i tillägget. Det behövs ingen AI, ingen nyckel och ingen internetanslutning för förklaringarna.
 
@@ -54,9 +54,10 @@ Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du sta
 
 ## Vad som får förklaring
 
-202 förklaringar finns i filen `extension/explanations.js`. De täcker bland annat:
+Nästan 400 förklaringar finns i filen `extension/explanations.js`. De täcker bland annat:
 
 - **Toppen av sidan:** sökfältet, plus-menyn och allt i den, notisklockan, din profilmeny, huvudmenyn, GitHub-loggan, Copilot, logga in och skapa konto.
+- **Huvudmenyn (de tre strecken):** Home, All issues, All pull requests, All repositories, Projects, Discussions, Codespaces, Copilot, Explore, Marketplace, MCP registry och Top repositories.
 - **Flikarna i ett projekt:** Code, Issues, Pull requests, Actions, Projects, Wiki, Security, Insights, Settings, Discussions och knappen för fler flikar.
 - **Projektets huvud:** Star, stjärnlistor, Fork, Watch, Sponsor, Pin, projektets och ägarens namn.
 - **Den gröna Code-knappen och dess meny:** Local, Codespaces, Create codespace, HTTPS, SSH, GitHub CLI, adressen, kopiera-knappen, Open with GitHub Desktop, Open with Visual Studio och Download ZIP.
@@ -68,6 +69,12 @@ Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du sta
 - **Inne i samtal:** författarens namn, tidpunkter, Edited, Load more, Copy link, rubriken, robotar, deployment-rutor, branch-namnen och Force-pushed.
 - **Files changed och Commits:** Changes from all commits, File filter, Conversations, Jump to, Expand all, fäll ihop fil, filnamn, Kopiera commit-koden och Browse repository at this point.
 - **Releases och filsidor:** Find a release, versionernas namn, Assets, Compare, sökvägen, Top, Raw, Blame, Symbols med flera.
+- **Startsidan:** Copilot-rutan, Feed, Top repositories, listorna med dina ändringsförslag och ärenden, och GitHubs nyheter (changelog).
+- **Notiser:** Inbox, Saved, Done, alla färdiga filter, sökning, sortering, gruppering och varje rad i listan.
+- **Din profil och profilmenyn:** Set status, Gists, Edit profile, Customize your pins, rutnätet med aktivitet och Contribution activity.
+- **Dina kontoinställningar:** varje rad i menyn till vänster och alla fält på sidan Public profile.
+- **Inställningar för ett projekt:** varje rad i menyn till vänster och allt på sidan General, till exempel Features, Pull Requests och Danger Zone.
+- **Kommentarsrutan:** verktygsraden med Bold, Italic, Link, listor, Mention och Saved replies, och knappen för att bifoga filer.
 - **Lite till:** Appearance settings, Skip to content, projektets hemsida, Custom properties, Outline, View all files, New workflow, Run workflow, Re-run jobs, Draft a new release, Sync fork och Contribute.
 
 ## Ändra eller lägga till en förklaring
@@ -78,19 +85,21 @@ Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du sta
 {
   key: "fork",
   name: "Fork",
-  text: "Gör en egen kopia av hela projektet på ditt konto. Använd den när du vill ändra fritt utan att röra originalet.",
+  text: "Gör en egen kopia av hela projektet på ditt konto. Originalet påverkas inte.",
+  use: "När du vill ändra fritt i någon annans projekt, eller bygga vidare på det.",
   ids: ["fork-button"],
   texts: ["fork"]
 }
 ```
 
-Ändra texten mellan citattecknen efter `text:`. Spara filen. I Chrome går du till `chrome://extensions` och klickar på den runda pilen på tillägget. Ladda sedan om GitHub-sidan.
+`text` säger vad saken är, med vardagliga ord. `use` säger när du har nytta av den och börjar alltid med "När". Ändra texten mellan citattecknen. Spara filen. I Chrome går du till `chrome://extensions` och klickar på den runda pilen på tillägget. Ladda sedan om GitHub-sidan.
 
 ## Val jag gjorde
 
 - **Projektet på GitHub fanns redan** som `substnc/GitHub-for-dummies` när jag började, tomt. Jag försökte ändå skapa ett nytt som heter `github-for-dummies`, men GitHub nekade min koppling (felkod 403). Det hade heller inte gått, eftersom GitHub ser stora och små bokstäver som samma namn. Så allt ligger i det befintliga projektet.
 - **Utseendet följer sub.stnc® Dark:** rent svart bakgrund, vit text, grå etikett ovanför, Helvetica Neue och 16 pixlars rundade hörn. Inga skuggor. Jag lade till en tunn mörkgrå kant (`#26282b`, samma som `tile-dim`) runt bubblan så att den syns mot GitHubs mörka läge. Ikonen är en svart pratbubbla med grå kant av samma skäl.
 - **Bubblan visar GitHubs eget namn** på saken överst i grått (till exempel Fork), och förklaringen under. Då lär man sig de engelska orden samtidigt.
+- **Varje förklaring har en rad om nyttan**, under en tunn linje och rubriken Nytta. Den börjar alltid med "När du" och berättar i vilken situation saken hjälper dig. Det är lättare att komma ihåg en knapp när man vet vad man ska ha den till.
 - **Ordet "issue"** fick stå kvar, eftersom det är det GitHub skriver. Det förklaras som en lapp om något som ska fixas. Samma sak med branch, commit och pull request.
 - **Knappar hittas på sex sätt**, i den här ordningen: id, aria-label (och title, placeholder och den separata tooltip-text som GitHub ofta använder, aria-labelledby), länkadress, CSS-väljare och sist knapptexten. Siffror som 165k tas bort före jämförelsen.
 - **Listor och menyer som helhet** får aldrig en bubbla för sitt namn. Annars skulle till exempel varje rad i issue-listan få förklaringen för hela listan.
@@ -100,6 +109,8 @@ Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du sta
 - **Tillägget körs bara på github.com**, inte på andra sidor och inte på gist.github.com.
 
 ## Vad som är testat och inte
+
+- **Svep inloggad i en riktig Chrome, 15 oktober 2026:** skriptet `tests/real/sweep-in-browser.js` höll musen över varje knapp, länk, flik och rubrik med det riktiga tillägget, inloggad som substnc. Det gällde nio sidor: startsidan med huvudmenyn öppen, ett eget projekt med Code-menyn öppen, ärendelistan, ett ärende och ett ändringsförslag i react/react, notiserna, profilen med profilmenyn öppen, kontoinställningarna och inställningarna för ett projekt. Siffrorna står i `tests/real/sweep-logged-in-log.txt`.
 
 - **Testat live mot github.com i Chrome (Chromium):** tillägget laddades och musen hölls över 38 av delarna i uppdraget på riktiga sidor (projektet microsoft/vscode, en issue och en pull request i facebook/react, plus vercel/next.js för Discussions). Alla 38 gav rätt förklaring. Resultatet ligger i `tests/real/live-result.json`.
 - **Svep över tio riktiga sidor:** jag sparade tio sidor från github.com (två projekt, issue-lista, en issue, pull request-lista, en pull request med Conversation, Commits och Files changed, en filsida och Releases) och lät musen gå över varenda knapp, flik, länk och rubrik på dem. Där jag hittade saker utan förklaring eller med fel förklaring rättade jag och körde om. Siffrorna står i `tests/real/sweep-log.txt`.
@@ -111,4 +122,4 @@ Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du sta
 - **Utan GitHubs skript:** testmiljön blockerade filerna från github.githubassets.com. Sidorna laddades alltså med GitHubs riktiga innehåll men utan stil och utan skript. Därför kunde menyer som öppnas med ett klick (innehållet i den gröna Code-knappen, branch-listan, plus-menyn) inte öppnas live. De är testade på mina testsidor.
 - **Inte testat i Safari:** det kräver en Mac med Xcode. Kommandot `xcrun` finns inte på Linux, så jag kunde bara skriva skriptet `bygg-safari.sh`.
 
-Testerna går att köra igen: `npm test` för testsidorna, `node tests/real/live-check.js` för live-kontrollen och `node tests/real/fetch-pages.js` följt av `node tests/real/sweep-real.js` för svepet (kräver Node och Playwright). De sparade sidorna läggs inte upp på GitHub, eftersom det är andras innehåll.
+Svepet inloggat kör du genom att klistra in `tests/real/sweep-in-browser.js` i konsolen i Chrome (Cmd + Alt + J) på en sida på github.com. Testerna går också att köra igen: `npm test` för testsidorna, `node tests/real/live-check.js` för live-kontrollen och `node tests/real/fetch-pages.js` följt av `node tests/real/sweep-real.js` för svepet (kräver Node och Playwright). De sparade sidorna läggs inte upp på GitHub, eftersom det är andras innehåll.

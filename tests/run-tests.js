@@ -38,6 +38,22 @@ const CASES = [
   ["/facebook/react", 'a[aria-label="Your pull requests"]', "your-pulls"],
   ["/facebook/react", '.AppHeader-context a[href="/facebook/react"] span', "repo-name"],
   ["/facebook/react", '.AppHeader-context a[href="/facebook"] span', "owner-name"],
+  // Huvudmenyn (inloggad)
+  ["/facebook/react", '#test-global-nav a[href="/dashboard"] span', "global-home"],
+  ["/facebook/react", '#test-global-nav a[href="/issues"] span', "your-issues"],
+  ["/facebook/react", '#test-global-nav a[href="/pulls"] span', "your-pulls"],
+  ["/facebook/react", '#test-global-nav a[href$="tab=repositories"] span', "your-repositories"],
+  ["/facebook/react", '#test-global-nav a[href$="tab=projects"] span', "global-projects"],
+  ["/facebook/react", '#test-global-nav a[href="/discussions"] span', "global-discussions"],
+  ["/facebook/react", '#test-global-nav a[href="/codespaces"] span', "global-codespaces"],
+  ["/facebook/react", '#test-global-nav a[href="/copilot"] span', "copilot"],
+  ["/facebook/react", '#test-global-nav a[href="/explore"] span', "global-explore"],
+  ["/facebook/react", '#test-global-nav a[href="/explore"]', "global-explore"],
+  ["/facebook/react", '#test-global-nav a[href="/marketplace"] span', "global-marketplace"],
+  ["/facebook/react", '#test-global-nav a[href="/mcp"] span', "global-mcp"],
+  ["/facebook/react", "#test-global-nav h2", "top-repositories"],
+  // Ett projekt i listan Top repositories ska visa projektlänken, inte @namn
+  ["/facebook/react", '#test-global-nav a[href="/octocat/hello-world"] span', "repo-link"],
   // Plus-menyn
   ["/facebook/react", '#test-plus-menu a[href="/new"] span', "new-repository"],
   ["/facebook/react", '#test-plus-menu a[href="/new/import"]', "import-repository"],
