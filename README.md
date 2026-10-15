@@ -1,12 +1,12 @@
 # Plain Words for GitHub SWE
 
+![Pratbubblan över knappen Fork på GitHub: vad knappen är och när du har nytta av den](docs/hero/hero.png)
+
 **GitHub förklarat med vardagliga ord, på svenska.**
 
 Många som börjar bygga saker med AI hamnar förr eller senare på GitHub. Där tar det ofta stopp, för allt är fullt av ord som fork, branch och pull request. Det här tillägget till Chrome och Safari förklarar sidan medan du använder den. Håll musen still över en knapp i en halv sekund, så får du veta vad den är och när du har nytta av den.
 
 *English: a Chrome and Safari extension that explains every button on github.com in plain Swedish when you hover over it.*
-
-![Pratbubblan över den gröna Code-knappen, med vad knappen är och när du har nytta av den](tests/screenshots/repo-code-button.png)
 
 ## Det här får du
 

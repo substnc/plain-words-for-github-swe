@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>Plain Words hero</title>
+<style>
+  /* Tokens från designsystemet sub.stnc® Dark */
+  :root {
+    --bg: #000000;
+    --ink: #ffffff;
+    --ink-muted: #7f7f7f;
+    --tile-100: #b6bac4;
+    --tile-200: #9ca2ae;
+    --tile-dim: #26282b;
+    --ink-on-dim: #3a3d42;
+    --space-margin: 40px;
+    --space-gap: 24px;
+    --space-column: 46px;
+    --space-line: 8px;
+    --radius-tile: 16px;
+    --sans: "TeX Gyre Heros", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 800px; background: var(--bg); overflow: hidden; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    display: grid;
+    grid-template-columns: 640px 1fr;
+    gap: var(--space-column);
+    padding: var(--space-margin);
+  }
+
+  /* Textkolumn: etikett och rubrik upptill, brödtext mot nederkanten */
+  .text { display: flex; flex-direction: column; justify-content: space-between; padding: 24px 0 8px; }
+  .label { font-size: 24px; line-height: 28px; color: var(--ink-muted); margin-bottom: var(--space-line); }
+  .heading { font-size: 80px; line-height: 84px; font-weight: 500; letter-spacing: -0.03em; }
+  .heading span { display: block; }
+  .heading .second { color: var(--ink-muted); }
+  .lead { font-size: 32px; line-height: 40px; max-width: 560px; }
+  .meta { font-size: 24px; line-height: 28px; color: var(--ink-muted); margin-top: 24px; }
+
+  /* Bildrutan: en förenklad GitHub-sida i mörkt läge */
+  .tile {
+    position: relative;
+    border-radius: var(--radius-tile);
+    background: #0d1117;
+    overflow: hidden;
+    padding: 44px 44px;
+    font-family: -apple-system, "Segoe UI", "TeX Gyre Heros", "Helvetica Neue", Arial, sans-serif;
+  }
+  .repo { display: flex; align-items: center; gap: 12px; font-size: 26px; color: #e6edf3; }
+  .repo .owner { color: #9198a1; }
+  .repo .pill { font-size: 15px; color: #9198a1; border: 1px solid #3d444d; border-radius: 999px; padding: 2px 10px; margin-left: 6px; }
+  .actions { display: flex; gap: 10px; margin-top: 28px; }
+  .btn {
+    display: flex; align-items: center; gap: 8px;
+    height: 40px; padding: 0 16px; border-radius: 8px;
+    background: #212830; border: 1px solid #3d444d; color: #e6edf3; font-size: 17px;
+  }
+  .btn .count { background: #2f3742; border-radius: 999px; padding: 1px 9px; font-size: 14px; color: #e6edf3; }
+  .btn.hover { background: #262c36; border-color: #9198a1; }
+  .tabs { display: flex; gap: 30px; margin-top: 36px; padding-bottom: 14px; border-bottom: 1px solid #3d444d; font-size: 17px; color: #9198a1; }
+  .tabs .on { color: #e6edf3; position: relative; }
+  .tabs .on::after { content: ""; position: absolute; left: -6px; right: -6px; bottom: -15px; height: 2px; background: #f78166; border-radius: 2px; }
+  .row { display: flex; gap: 10px; margin-top: 24px; }
+  .code { background: #238636; border-color: #2ea043; color: #fff; }
+  .lines { margin-top: 26px; border: 1px solid #3d444d; border-radius: 8px; }
+  .lines div { height: 50px; border-top: 1px solid #3d444d; display: flex; align-items: center; padding: 0 18px; gap: 14px; }
+  .lines div:first-child { border-top: 0; background: #151b23; }
+  .bar { height: 10px; border-radius: 5px; background: #2f3742; }
+
+  /* Pratbubblan, samma mått som i content.js men dubbel storlek */
+  .bubble {
+    position: absolute;
+    width: 470px;
+    padding: 24px 28px;
+    border-radius: 24px;
+    background: #000000;
+    border: 2px solid var(--tile-dim);
+    font-family: var(--sans);
+    font-size: 26px; line-height: 36px; color: #ffffff;
+  }
+  .bubble .name { font-size: 21px; line-height: 28px; color: var(--ink-muted); margin-bottom: 12px; }
+  .bubble .use { margin-top: 16px; padding-top: 16px; border-top: 2px solid var(--tile-dim); }
+  .bubble .use-label { font-size: 21px; line-height: 28px; color: var(--ink-muted); margin-bottom: 6px; }
+  .cursor { position: absolute; width: 28px; }
+</style>
+</head>
+<body>
+  <div class="text">
+    <div>
+      <p class="label">Webbläsartillägg för Chrome och Safari</p>
+      <h1 class="heading"><span>GitHub förklarat</span><span class="second">med vardagliga ord</span></h1>
+    </div>
+    <div>
+      <p class="lead">Håll musen still över en knapp. Då får du veta vad den är och när du har nytta av den.</p>
+      <p class="meta">Plain Words for GitHub SWE · 383 förklaringar på svenska</p>
+    </div>
+  </div>
+
+  <div class="tile">
+    <div class="repo"><span class="owner">facebook /</span> <span>react</span><span class="pill">Public</span></div>
+    <div class="actions">
+      <div class="btn">Watch <span class="count">6.7k</span></div>
+      <div class="btn hover" id="fork">Fork <span class="count">49.6k</span></div>
+      <div class="btn">Star <span class="count">238k</span></div>
+    </div>
+    <div class="tabs"><span class="on">Code</span><span>Issues</span><span>Pull requests</span><span>Actions</span><span>Insights</span></div>
+    <div class="row">
+      <div class="btn">main</div>
+      <div class="btn">Go to file</div>
+      <div class="btn code">Code</div>
+    </div>
+    <div class="lines">
+      <div><span class="bar" style="width:40%"></span></div>
+      <div><span class="bar" style="width:22%"></span></div>
+      <div><span class="bar" style="width:30%"></span></div>
+      <div><span class="bar" style="width:18%"></span></div>
+    </div>
+
+    <div class="bubble" style="left:170px; top:168px">
+      <div class="name">Fork</div>
+      <div>Gör en egen kopia av hela projektet på ditt konto. Originalet påverkas inte.</div>
+      <div class="use">
+        <div class="use-label">Nytta</div>
+        <div>När du vill ändra fritt i någon annans projekt, eller bygga vidare på det.</div>
+      </div>
+    </div>
+    <svg class="cursor" style="left:236px; top:126px" viewBox="0 0 24 32" aria-hidden="true">
+      <path d="M2 2 L2 26 L8 20 L12 30 L16 28 L12 18 L20 18 Z" fill="#ffffff" stroke="#000000" stroke-width="1.6" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</body>
+</html>
