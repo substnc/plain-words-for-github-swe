@@ -1,6 +1,6 @@
 # Plain Words for GitHub SWE
 
-![Pratbubblan över Marketplace i GitHubs meny: vad det är och när du har nytta av den](docs/hero/hero.png)
+![Markören går över Copilot, Marketplace och MCP registry i GitHubs meny, och en pratbubbla förklarar var och en](docs/hero/hero.gif)
 
 **GitHub förklarat med vardagliga ord, på svenska.**
 

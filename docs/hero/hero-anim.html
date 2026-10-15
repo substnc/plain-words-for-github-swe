@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<title>Plain Words hero animation</title>
+<style>
+  /* Tokens från designsystemet sub.stnc® Dark */
+  :root {
+    --bg: #000000;
+    --ink: #ffffff;
+    --ink-muted: #7f7f7f;
+    --tile-100: #b6bac4;
+    --tile-200: #9ca2ae;
+    --tile-dim: #26282b;
+    --ink-on-dim: #3a3d42;
+    --space-margin: 40px;
+    --space-gap: 24px;
+    --space-column: 46px;
+    --space-line: 8px;
+    --radius-tile: 16px;
+    --sans: "TeX Gyre Heros", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 800px; background: var(--bg); overflow: hidden; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    display: grid;
+    grid-template-columns: 640px 1fr;
+    gap: var(--space-column);
+    padding: var(--space-margin);
+  }
+
+  /* Textkolumn: etikett och rubrik upptill, brödtext mot nederkanten */
+  .text { display: flex; flex-direction: column; justify-content: space-between; padding: 24px 0 8px; }
+  .label { font-size: 24px; line-height: 28px; color: var(--ink-muted); margin-bottom: var(--space-line); }
+  .heading { font-size: 80px; line-height: 84px; font-weight: 500; letter-spacing: -0.03em; }
+  .heading span { display: block; }
+  .heading .second { color: var(--ink-muted); }
+  .lead { font-size: 32px; line-height: 40px; max-width: 560px; }
+  .meta { font-size: 24px; line-height: 28px; color: var(--ink-muted); margin-top: 24px; }
+
+  /* Bildrutan: en förenklad GitHub-sida i mörkt läge */
+  .tile {
+    position: relative;
+    border-radius: var(--radius-tile);
+    background: #0d1117;
+    overflow: hidden;
+    padding: 44px 44px;
+    background-image: linear-gradient(90deg, transparent 340px, #0d1117 340px);
+    font-family: -apple-system, "Segoe UI", "TeX Gyre Heros", "Helvetica Neue", Arial, sans-serif;
+  }
+  .repo { display: flex; align-items: center; gap: 12px; font-size: 26px; color: #e6edf3; }
+  .repo .owner { color: #9198a1; }
+  .repo .pill { font-size: 15px; color: #9198a1; border: 1px solid #3d444d; border-radius: 999px; padding: 2px 10px; margin-left: 6px; }
+  .actions { display: flex; gap: 10px; margin-top: 28px; }
+  .btn {
+    display: flex; align-items: center; gap: 8px;
+    height: 40px; padding: 0 16px; border-radius: 8px;
+    background: #212830; border: 1px solid #3d444d; color: #e6edf3; font-size: 17px;
+  }
+  .btn .count { background: #2f3742; border-radius: 999px; padding: 1px 9px; font-size: 14px; color: #e6edf3; }
+  .btn.hover { background: #262c36; border-color: #9198a1; }
+  .tabs { display: flex; gap: 30px; margin-top: 36px; padding-bottom: 14px; border-bottom: 1px solid #3d444d; font-size: 17px; color: #9198a1; }
+  .tabs .on { color: #e6edf3; position: relative; }
+  .tabs .on::after { content: ""; position: absolute; left: -6px; right: -6px; bottom: -15px; height: 2px; background: #f78166; border-radius: 2px; }
+  .row { display: flex; gap: 10px; margin-top: 24px; }
+  .code { background: #238636; border-color: #2ea043; color: #fff; }
+  .lines { margin-top: 26px; border: 1px solid #3d444d; border-radius: 8px; }
+  .lines div { height: 50px; border-top: 1px solid #3d444d; display: flex; align-items: center; padding: 0 18px; gap: 14px; }
+  .lines div:first-child { border-top: 0; background: #151b23; }
+  .bar { height: 10px; border-radius: 5px; background: #2f3742; }
+
+  .menu { position: absolute; left: 0; top: 0; bottom: 0; width: 340px; background: #151b23; border-right: 1px solid #3d444d; padding: 32px 16px; }
+  .logo { padding: 0 12px 22px; }
+  .item { font-size: 19px; color: #e6edf3; padding: 0 12px; height: 44px; display: flex; align-items: center; border-radius: 8px; }
+  .item.hover { background: #262c36; }
+  .sep { height: 1px; background: #3d444d; margin: 10px 12px; }
+
+  /* Pratbubblan, samma mått som i content.js men dubbel storlek */
+  .bubble {
+    position: absolute;
+    width: 440px;
+    padding: 24px 28px;
+    border-radius: 24px;
+    background: #000000;
+    border: 2px solid var(--tile-dim);
+    font-family: var(--sans);
+    font-size: 26px; line-height: 36px; color: #ffffff;
+  }
+  .bubble .name { font-size: 21px; line-height: 28px; color: var(--ink-muted); margin-bottom: 12px; }
+  .bubble .use { margin-top: 16px; padding-top: 16px; border-top: 2px solid var(--tile-dim); }
+  .bubble .use-label { font-size: 21px; line-height: 28px; color: var(--ink-muted); margin-bottom: 6px; }
+  .cursor { position: absolute; width: 28px; }
+</style>
+</head>
+<body>
+  <div class="text">
+    <div>
+      <h1 class="heading"><span>GitHub förklarat</span><span class="second">med vardagliga ord</span></h1>
+    </div>
+    <div>
+      <p class="lead">Håll markören still över en knapp. Då får du veta vad den är och när du har nytta av den.</p>
+    </div>
+  </div>
+
+  <div class="tile">
+    <nav class="menu">
+      <div class="logo"><svg viewBox="0 0 16 16" width="34" height="34" aria-hidden="true"><path fill="#e6edf3" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></div>
+      <div class="item">Home</div>
+      <div class="item">Issues</div>
+      <div class="item">Pull requests</div>
+      <div class="item">Repositories</div>
+      <div class="item">Projects</div>
+      <div class="item">Codespaces</div>
+      <div class="item" id="copilot">Copilot</div>
+      <div class="sep"></div>
+      <div class="item">Explore</div>
+      <div class="item" id="marketplace">Marketplace</div>
+      <div class="item" id="mcp">MCP registry</div>
+    </nav>
+
+    <div class="bubble" id="bubble" style="left:360px; top:270px; opacity:0">
+      <div class="name" id="b-name"></div>
+      <div id="b-text"></div>
+      <div class="use">
+        <div class="use-label">Nytta</div>
+        <div id="b-use"></div>
+      </div>
+    </div>
+    <svg class="cursor" id="cursor" style="left:600px; top:140px" viewBox="0 0 24 32" aria-hidden="true">
+      <path d="M2 2 L2 26 L8 20 L12 30 L16 28 L12 18 L20 18 Z" fill="#ffffff" stroke="#000000" stroke-width="1.6" stroke-linejoin="round"/>
+    </svg>
+  </div>
+<script>
+  // Texterna är kopierade ordagrant från extension/explanations.js
+  var TEXTS = {
+    copilot: ["Copilot", "GitHubs AI-assistent. Du kan ställa frågor på vanlig svenska om koden och projektet.", "När du inte förstår vad något i ett projekt gör och vill få det förklarat."],
+    marketplace: ["Marketplace", "En butik med tillägg till GitHub, till exempel verktyg som testar koden automatiskt. Många är gratis.", "När du vill att GitHub ska göra något åt dig som det inte gör från början."],
+    mcp: ["MCP registry", "En katalog med kopplingar som låter AI-assistenter prata med andra tjänster, till exempel en kalender eller en databas.", "När du vill ge Copilot eller en annan AI tillgång till fler verktyg."]
+  };
+  // Tidslinje i sekunder: markören flyttas, står still en halv sekund, bubblan tonas in och står kvar.
+  var STOPS = [
+    { at: 0.0, move: 0.9, target: "copilot", hold: 2.0 },
+    { move: 0.8, target: "marketplace", hold: 2.0 },
+    { move: 0.5, target: "mcp", hold: 2.0 },
+    { move: 0.9, target: null, hold: 0.4 }
+  ];
+  var WAIT = 0.5, FADE = 0.2;
+  var IDLE = { x: 600, y: 140 };
+  window.DURATION = 0;
+  STOPS.forEach(function (s) { s.start = window.DURATION; window.DURATION += s.move + (s.target ? WAIT + FADE : 0) + s.hold; });
+
+  var tile = document.querySelector(".tile");
+  function point(id) {
+    if (!id) return IDLE;
+    var r = document.getElementById(id).getBoundingClientRect(), t = tile.getBoundingClientRect();
+    return { x: r.left - t.left + 240, y: r.top - t.top + r.height / 2 - 4 };
+  }
+  function ease(p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; }
+
+  window.setTime = function (time) {
+    var cursor = document.getElementById("cursor"), bubble = document.getElementById("bubble");
+    var i = 0;
+    while (i < STOPS.length - 1 && time >= STOPS[i + 1].start) i++;
+    var s = STOPS[i], prev = point(i ? STOPS[i - 1].target : null), next = point(s.target);
+    var local = time - s.start, p = Math.min(local / s.move, 1), e = ease(p);
+    cursor.style.left = prev.x + (next.x - prev.x) * e + "px";
+    cursor.style.top = prev.y + (next.y - prev.y) * e + "px";
+    document.querySelectorAll(".item").forEach(function (el) { el.classList.remove("hover"); });
+    var shown = 0;
+    if (s.target && p >= 1) {
+      document.getElementById(s.target).classList.add("hover");
+      shown = Math.max(0, Math.min((local - s.move - WAIT) / FADE, 1));
+      var t = TEXTS[s.target];
+      document.getElementById("b-name").textContent = t[0];
+      document.getElementById("b-text").textContent = t[1];
+      document.getElementById("b-use").textContent = t[2];
+      var h = bubble.offsetHeight, max = tile.clientHeight - h - 32;
+      bubble.style.top = Math.max(32, Math.min(next.y - 150, max)) + "px";
+    }
+    bubble.style.opacity = shown;
+  };
+  window.setTime(0);
+</script>
+</body>
+</html>
