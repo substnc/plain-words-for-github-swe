@@ -24,7 +24,7 @@ Det finns två sätt. Det första är enklast och kräver ingenting extra, men t
 
 ### Snabbt och tillfälligt, utan Xcode
 
-Kräver Safari 26 eller senare.
+Kräver Safari 26 eller senare. Testat i Safari 27.
 
 1. **Hämta filerna** på samma sätt som i steg 1 och 2 för Chrome ovan.
 2. **Visa utvecklarinställningarna.** Öppna Safari, tryck **Cmd + ,** och gå till fliken **Avancerat**. Bocka i **Visa funktioner för webbutvecklare**.
@@ -138,6 +138,7 @@ Nästan 400 förklaringar finns i filen `extension/explanations.js`. De täcker 
 
 - **Utloggad:** jag kunde inte logga in. Knappar som bara syns inloggad är därför bara testade på mina egna testsidor, inte live: plus-menyn, notisklockan, profilmenyn, Settings-fliken, Add file, Merge-knapparna, Review changes, Approve, Comment-rutan och Close issue.
 - **Utan GitHubs skript:** testmiljön blockerade filerna från github.githubassets.com. Sidorna laddades alltså med GitHubs riktiga innehåll men utan stil och utan skript. Därför kunde menyer som öppnas med ett klick (innehållet i den gröna Code-knappen, branch-listan, plus-menyn) inte öppnas live. De är testade på mina testsidor.
-- **Inte testat i Safari:** det kräver en Mac med Xcode. Kommandot `xcrun` finns inte på Linux, så jag kunde bara skriva skriptet `bygg-safari.sh`.
+- **Safari, tillfälligt tillägg:** testat 15 oktober 2026 i Safari 27 på macOS 27, utan Xcode. Bubblan visas på github.com som i Chrome.
+- **Safari, permanent med Xcode:** inte testat. Xcode fanns inte på datorn, så skriptet `bygg-safari.sh` har inte körts hela vägen. Det säger nu tydligt till om Xcode saknas.
 
 Svepet inloggat kör du genom att klistra in `tests/real/sweep-in-browser.js` i konsolen i Chrome (Cmd + Alt + J) på en sida på github.com. Testerna går också att köra igen: `npm test` för testsidorna, `node tests/real/live-check.js` för live-kontrollen och `node tests/real/fetch-pages.js` följt av `node tests/real/sweep-real.js` för svepet (kräver Node och Playwright). De sparade sidorna läggs inte upp på GitHub, eftersom det är andras innehåll.
