@@ -4,8 +4,11 @@
 set -e
 cd "$(dirname "$0")"
 
-if ! command -v xcrun >/dev/null 2>&1; then
-  echo "Hittar inte xcrun. Installera Xcode från App Store och öppna det en gång först."
+# Kommandoradsverktygen har xcrun men inte omvandlaren. Den följer bara med hela Xcode.
+if ! xcrun --find safari-web-extension-converter >/dev/null 2>&1; then
+  echo "Hittar inte Safaris omvandlare. Den följer med Xcode, som du hämtar gratis i App Store."
+  echo "Öppna Xcode en gång efter installationen och kör sedan: sudo xcode-select -s /Applications/Xcode.app"
+  echo "Vill du bara prova tillägget går det utan Xcode, se Installera i Safari i LASMIG.md."
   exit 1
 fi
 

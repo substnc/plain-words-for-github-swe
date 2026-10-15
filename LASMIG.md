@@ -20,7 +20,22 @@ Chrome kan ibland visa en ruta om att tillägg i utvecklarläge kan vara osäkra
 
 ## Installera i Safari
 
-Safari är krångligare, eftersom Apple kräver att tillägg byggs om till en liten app med programmet Xcode. Den här delen är **inte testad**, eftersom jag inte hade någon Mac. Stegen följer Apples egna instruktioner.
+Det finns två sätt. Det första är enklast och kräver ingenting extra, men tillägget är bara tillfälligt. Det andra är permanent men kräver programmet Xcode.
+
+### Snabbt och tillfälligt, utan Xcode
+
+Kräver Safari 26 eller senare.
+
+1. **Hämta filerna** på samma sätt som i steg 1 och 2 för Chrome ovan.
+2. **Visa utvecklarinställningarna.** Öppna Safari, tryck **Cmd + ,** och gå till fliken **Avancerat**. Bocka i **Visa funktioner för webbutvecklare**.
+3. **Lägg till tillägget.** Gå till fliken **Utvecklare** i samma fönster och klicka på **Lägg till tillfälligt tillägg** (Add Temporary Extension). Godkänn med ditt lösenord eller Touch ID om Safari frågar. Välj mappen **extension** och klicka **Välj**.
+4. **Slå på det.** Safari byter till fliken **Tillägg**, där **Plain Words for GitHub SWE** står under Tillfälliga. Bocka i det och tillåt det på github.com.
+
+Ett tillfälligt tillägg försvinner efter en tid, eller när du startar om Safari. Då gör du steg 3 och 4 igen.
+
+### Permanent, med Xcode
+
+Det här sättet är inte testat än. Stegen följer Apples egna instruktioner.
 
 **Det här behöver du installera först:**
 
@@ -38,7 +53,7 @@ Safari är krångligare, eftersom Apple kräver att tillägg byggs om till en li
 7. **Tillåt tillägget i Safari.** Öppna Safari och gå till **Safari > Inställningar > Avancerat**. Bocka i **Visa funktioner för webbutvecklare**. Gå sedan till fliken **Utvecklare** i samma inställningsfönster och bocka i **Tillåt osignerade tillägg**. Safari frågar efter ditt lösenord.
 8. **Slå på det.** Gå till fliken **Tillägg** i Safaris inställningar och bocka i **Plain Words SWE**. Klicka på tillägget och välj att det får köras på github.com.
 
-Bra att veta: Safari glömmer **Tillåt osignerade tillägg** varje gång du startar om Safari. Då behöver du göra steg 7 igen. Det slipper man bara om tillägget signeras med ett betalt Apple-utvecklarkonto.
+Bra att veta: Safari kan glömma **Tillåt osignerade tillägg** varje gång du startar om Safari. Då behöver du göra steg 7 igen. Det slipper man bara om tillägget signeras med ett betalt Apple-utvecklarkonto.
 
 ## Använda tillägget
 
