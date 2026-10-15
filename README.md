@@ -6,7 +6,7 @@ Ett webbläsartillägg för Chrome och Safari som förklarar knappar, flikar och
 
 **Så installerar du det:** läs [LASMIG.md](LASMIG.md).
 
-![Pratbubblan över den gröna Code-knappen](tests/screenshots/repo-code-button.png)
+![Pratbubblan över den gröna Code-knappen, med vad knappen är och när du har nytta av den](tests/screenshots/repo-code-button.png)
 
 ## Mappar
 
