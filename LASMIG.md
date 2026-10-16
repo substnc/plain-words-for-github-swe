@@ -13,7 +13,7 @@ Det tar ungefär fem minuter. Du gör det bara en gång.
 3. **Öppna Chromes tilläggssida.** Skriv `chrome://extensions` i adressfältet högst upp i Chrome och tryck Enter.
 4. **Slå på utvecklarläget.** Uppe till höger finns en liten knapp som heter **Utvecklarläge** (på engelska **Developer mode**). Klicka så att den blir påslagen. Det låter farligt men betyder bara att du får lägga in tillägg från din egen dator.
 5. **Lägg in tillägget.** Klicka på knappen **Läs in okomprimerat tillägg** (på engelska **Load unpacked**) som dök upp till vänster. Leta upp mappen från steg 2, öppna den och välj mappen som heter **extension**. Klicka **Välj**.
-6. **Sätt fast ikonen.** Klicka på pusselbiten uppe till höger i Chrome. Klicka på nålen bredvid **Plain Words for GitHub SWE**. Nu syns den svarta pratbubblan med frågetecken i verktygsfältet.
+6. **Sätt fast ikonen.** Klicka på pusselbiten uppe till höger i Chrome. Klicka på nålen bredvid **Plain Words for GitHub SWE**. Nu syns ikonen, en vit pratbubbla med en markör på svart botten, i verktygsfältet.
 7. **Prova.** Gå till https://github.com/facebook/react och håll musen still över knappen **Star** eller fliken **Issues**.
 
 Chrome kan ibland visa en ruta om att tillägg i utvecklarläge kan vara osäkra. Det gäller tillägg du inte känner till. Det här tillägget läser bara sidor på github.com och skickar ingenting någonstans.
