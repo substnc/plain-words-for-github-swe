@@ -1,0 +1,15 @@
+<!doctype html><html><body style="margin:0;background:#fff;font-family:'TeX Gyre Heros',Arial,sans-serif">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);">
+</div>
+<script>
+const names=[["p1-ren.svg","1  Ren och platt"],["p2-djup.svg","2  Med ljus och djup"],["p3-markor.svg","3  Med markör"]];
+const g=document.querySelector("div");
+for(const [f,n] of names){
+  const col=document.createElement("div");
+  col.innerHTML=`<div style="background:#000;color:#fff;padding:28px 28px 20px;font-size:22px">${n}</div>
+  <div style="background:#000;padding:0 28px 28px;display:flex;align-items:flex-end;gap:22px"><img src="${f}" width="160"><img src="${f}" width="48"><img src="${f}" width="16"></div>
+  <div style="background:#dee1e6;padding:14px 28px;display:flex;align-items:center;gap:14px;font-size:14px;color:#333">ljust verktygsfält <img src="${f}" width="16"><img src="${f}" width="32"></div>
+  <div style="background:#202124;padding:14px 28px;display:flex;align-items:center;gap:14px;font-size:14px;color:#aaa">mörkt verktygsfält <img src="${f}" width="16"><img src="${f}" width="32"></div>`;
+  g.appendChild(col);
+}
+</script></body></html>
