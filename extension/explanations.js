@@ -35,8 +35,9 @@
   }
 
   // En rad i menyn för dina kontoinställningar. Känns igen på länkens adress.
+  // Gäller bara på inställningssidorna, så att länken Settings i profilmenyn får sin egen förklaring.
   function setting(key, path, name, text, use) {
-    return { key: key, name: name, text: text, use: use, href: [new RegExp("^" + path + "/?$")], texts: [name.toLowerCase()], within: link(path) };
+    return { key: key, name: name, text: text, use: use, href: [new RegExp("^" + path + "/?$")], texts: [name.toLowerCase()], within: link(path), page: /^\/settings(\/|$)/ };
   }
 
   // En rad i menyn för ett projekts inställningar, till exempel /ägare/projekt/settings/hooks.

@@ -1,5 +1,10 @@
 # Ändringar
 
+## 1.0.1
+
+- Länken Settings i profilmenyn visar nu förklaringen för kontoinställningarna, inte för sidan Public profile.
+- Testerna körs automatiskt på Windows, Mac och Linux.
+
 ## 1.0.0, 15 oktober 2026
 
 Första versionen.

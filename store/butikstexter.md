@@ -4,7 +4,7 @@ Allt här är färdigt att klistra in i Chrome Web Stores utvecklarpanel.
 
 ## Paket
 
-Ladda upp `store/plain-words-for-github-swe-1.0.0.zip`. Gör en ny zip med `bash store/pack.sh` efter varje ändring i `extension/`, och höj då `version` i `extension/manifest.json` först.
+Ladda upp `store/plain-words-for-github-swe-1.0.1.zip`. Gör en ny zip med `bash store/pack.sh` efter varje ändring i `extension/`, och höj då `version` i `extension/manifest.json` först.
 
 ## Fliken Butikslista (Store listing)
 
