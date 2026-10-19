@@ -17,15 +17,11 @@ Många som börjar bygga saker med AI hamnar förr eller senare på GitHub. Där
 
 ## Installera
 
-Det tar ungefär fem minuter i Chrome.
+**Chrome, Edge och Brave:** [Lägg till från Chrome Web Store](https://chromewebstore.google.com/detail/plain-words-for-github-sw/khnhfjlkjldhhflmdhbbcpklihcelomh). Ett klick, och tillägget uppdateras av sig självt.
 
-1. Hämta filerna: klicka på den gröna knappen **Code** högst upp på den här sidan och välj **Download ZIP**. Packa upp zip-filen.
-2. Skriv `chrome://extensions` i adressfältet i Chrome.
-3. Slå på **Utvecklarläge** (Developer mode) uppe till höger.
-4. Klicka **Läs in okomprimerat tillägg** (Load unpacked) och välj mappen **extension** i den uppackade mappen.
-5. Gå till ett projekt på GitHub, till exempel [facebook/react](https://github.com/facebook/react), och håll markören över knappen **Star**.
+Prova sedan: gå till ett projekt på GitHub, till exempel [facebook/react](https://github.com/facebook/react), och håll markören över knappen **Star**.
 
-Steg för steg med fler detaljer, Safari och hjälp om något krånglar: [LASMIG.md](LASMIG.md).
+**Safari**, eller om du vill installera från filerna här: steg för steg i [LASMIG.md](LASMIG.md).
 
 ## Använda
 

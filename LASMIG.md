@@ -1,12 +1,18 @@
 # Plain Words for GitHub SWE
 
-Ett tillägg till webbläsaren som förklarar GitHub på svenska. Håll musen still över en knapp, flik, meny eller länk på github.com i ungefär en halv sekund, så dyker en svart pratbubbla upp. Den berättar med vardagliga ord vad saken är, och under rubriken Nytta när du har användning av den.
+Ett tillägg till webbläsaren som förklarar GitHub på svenska. Håll markören still över en knapp, flik, meny eller länk på github.com i ungefär en halv sekund, så dyker en svart pratbubbla upp. Den berättar med vardagliga ord vad saken är, och under rubriken Nytta när du har användning av den.
 
 Allt finns redan i tillägget. Det behövs ingen AI, ingen nyckel och ingen internetanslutning för förklaringarna.
 
 ## Installera i Chrome
 
-Det tar ungefär fem minuter. Du gör det bara en gång.
+### Enklast: från Chrome Web Store
+
+Gå till [tilläggets sida i Chrome Web Store](https://chromewebstore.google.com/detail/plain-words-for-github-sw/khnhfjlkjldhhflmdhbbcpklihcelomh) och klicka **Lägg till i Chrome**. Klart. Det fungerar också i Edge och Brave. Tillägget uppdateras av sig självt när det kommer en ny version.
+
+### Från filerna, utan butiken
+
+Det tar ungefär fem minuter. Du gör det bara en gång. Det här sättet uppdateras inte av sig självt.
 
 1. **Hämta filerna.** Gå till sidan för projektet på GitHub: https://github.com/substnc/plain-words-for-github-swe. Klicka på den gröna knappen **Code** och sedan på **Download ZIP**.
 2. **Packa upp.** Öppna mappen Hämtade filer och dubbelklicka på zip-filen. Nu får du en vanlig mapp. Flytta gärna den mappen till ett ställe där den får ligga kvar, till exempel Dokument. Om du raderar mappen slutar tillägget att fungera.
