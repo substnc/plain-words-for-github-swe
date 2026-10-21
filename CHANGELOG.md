@@ -1,5 +1,10 @@
 # Ändringar
 
+## 1.0.2
+
+- Ny ikon: monogrammet pw i lila på en svart cirkel. Alla Plain Words-tillägg har samma form, i färgen för sin app.
+- Ordet GitHub och reglaget i rutan är lila.
+
 ## 1.0.1
 
 - Länken Settings i profilmenyn visar nu förklaringen för kontoinställningarna, inte för sidan Public profile.

@@ -24,7 +24,7 @@ const path = require("path");
     font-family:'TeX Gyre Heros','Helvetica Neue',Helvetica,Arial,sans-serif;display:flex;flex-direction:column;
     justify-content:space-between;box-sizing:border-box;padding:32px">
     <img src="${icon}" width="56" height="56">
-    <div style="font-size:34px;line-height:38px;font-weight:500;letter-spacing:-0.02em;color:#fff">GitHub förklarat<br>
+    <div style="font-size:34px;line-height:38px;font-weight:500;letter-spacing:-0.02em;color:#fff"><span style="color:#a371f7">GitHub</span> förklarat<br>
     <span style="color:#7f7f7f">med vardagliga ord</span></div></body></html>`);
   await tile.waitForLoadState("load");
   await tile.screenshot({ path: path.join(__dirname, "promo-small-440x280.png") });

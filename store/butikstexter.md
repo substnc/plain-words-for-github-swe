@@ -4,7 +4,7 @@ Allt här är färdigt att klistra in i Chrome Web Stores utvecklarpanel.
 
 ## Paket
 
-Ladda upp `store/plain-words-for-github-swe-1.0.1.zip`. Gör en ny zip med `bash store/pack.sh` efter varje ändring i `extension/`, och höj då `version` i `extension/manifest.json` först.
+Ladda upp `store/plain-words-for-github-swe-1.0.2.zip`. Gör en ny zip med `bash store/pack.sh` efter varje ändring i `extension/`, och höj då `version` i `extension/manifest.json` först.
 
 ## Fliken Butikslista (Store listing)
 
@@ -36,7 +36,7 @@ Ingen AI, inget konto och ingen internetanslutning behövs. Tillägget samlar in
 **Språk:** svenska
 
 **Bilder:**
-- Butiksikon 128 x 128: `extension/icons/icon-128.png`
+- Butiksikon 128 x 128: `store/icon-store-128.png` (96 x 96 bild med 16 px genomskinlig kant, som butiken vill ha)
 - Skärmbilder 1280 x 800: `store/screenshot-1-copilot.png`, `store/screenshot-2-marketplace.png`, `store/screenshot-3-mcp.png`
 - Liten reklamruta 440 x 280: `store/promo-small-440x280.png`
 

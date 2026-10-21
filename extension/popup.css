@@ -6,6 +6,8 @@
   --tile-dim: #26282b;
   --ink-on-dim: #3a3d42;
   --radius-tile: 16px;
+  /* Accent: lila som ikonen, GitHubs lila för mörkt läge. Samma färg som i tools/make_icons.py. */
+  --accent: #a371f7;
 }
 * { box-sizing: border-box; }
 html, body { background: var(--bg); }
@@ -22,6 +24,8 @@ header { display: flex; align-items: flex-start; justify-content: space-between;
 .label-small { display: block; color: var(--ink-muted); font-size: 13px; line-height: 18px; margin-bottom: 8px; }
 h1 { font-size: 24px; line-height: 28px; font-weight: 500; letter-spacing: -0.02em; margin: 0; }
 h1 span { display: block; color: var(--ink-muted); }
+/* Sajtens namn i accentfärgen, samma färg som ikonen. */
+h1 .site { display: inline; color: var(--accent); font-weight: inherit; }
 .row {
   display: flex; align-items: center; justify-content: space-between;
   cursor: pointer; position: relative;
@@ -36,9 +40,9 @@ h1 span { display: block; color: var(--ink-muted); }
   content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px;
   border-radius: 50%; background: var(--ink-muted); transition: transform .15s ease, background .15s ease;
 }
-.row input:checked + .switch { background: var(--ink); }
+.row input:checked + .switch { background: var(--accent); }
 .row input:checked + .switch::after { transform: translateX(20px); background: var(--bg); }
-.row input:focus-visible + .switch { outline: 2px solid var(--ink); outline-offset: 3px; }
+.row input:focus-visible + .switch { outline: 2px solid var(--accent); outline-offset: 3px; }
 /* Signaturen längst ner: vit namnteckning på svart, med namnet i grått bredvid. */
 .byline {
   display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;
